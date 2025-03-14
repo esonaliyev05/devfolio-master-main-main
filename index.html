@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Esonaliyev Alyorbek - Frontend Developer & Engineer</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
     content="Esonaliyev Alyorbek - Tajribali Frontend Dasturchi. Uning loyihalari, xizmatlari va shaxsiy blogi bilan tanishing.">
@@ -12,6 +13,7 @@
     content="Esonaliyev Alyorbek, Alyorbekdev, frontend developer, web developer, dasturchi, portfolio, blog, JavaScript, React, freelancer">
   <meta name="author" content="Esonaliyev Alyorbek">
   <meta name="robots" content="index, follow">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
   <!-- Canonical -->
   <link rel="canonical" href="https://alyorbek.uz/">
@@ -225,13 +227,11 @@
       }
     }
   </style>
-
 </head>
 
 <body id="page-top">
   <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
     <div class="container">
-      <!-- <img src="imegsNew/2572742.png" alt="Logo" style="width: 40px; height: 40px; margin-right: 10px;"> -->
       <a class="navbar-brand js-scroll" href="#page-top">Alyor-dev</a>
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
         aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -268,7 +268,7 @@
     <div class="overlay-itro"></div>
     <div class="intro-content display-table">
       <div class="table-cell">
-        <div class="container">
+        <div class="container" >
           <h1 class="intro-title mb-4">I am Esonaliyev Alyorbek</h1>
           <p class="intro-subtitle"><span class="text-slider-items">Web Developer,Frontend Developer,</span><strong
               class="text-slider"></strong></p>
@@ -287,10 +287,10 @@
                 <div class="row">
                   <div class="col-sm-6 col-md-5">
                     <div class="about-img">
-                      <img src="BgImg/photo_2023-12-15_15-12-53.jpg" class="img-fluid rounded b-shadow-a" 
-                           style="max-width: 100%; height: auto; border-radius: 15px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); border: 2px solid #ddd; display: block; margin: 0 auto;"
-                           alt="Esonaliyev Alyorbek - Frontend Dasturchi rasmi"
-                           title="Esonaliyev Alyorbek - Frontend Developer">
+                      <img src="BgImg/photo_2023-12-15_15-12-53.jpg" class="img-fluid rounded b-shadow-a"
+                        style="max-width: 100%; height: auto; border-radius: 15px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); border: 2px solid #ddd; display: block; margin: 0 auto;"
+                        alt="Esonaliyev Alyorbek - Frontend Dasturchi rasmi"
+                        title="Esonaliyev Alyorbek - Frontend Developer">
                     </div>
                   </div>
                   <div class="col-sm-6 col-md-7">
@@ -417,12 +417,8 @@
         </div>
       </div>
     </div>
-</section>
+  </section>
 
-
-
-
-  
   <section id="service" class="services-mf route">
     <div class="container">
       <div class="row">
@@ -570,8 +566,6 @@
         </div>
       </div>
       <div class="row">
-
-
         <div class="col-md-4">
           <div class="work-box">
             <a href="img/photo_2025-02-21_22-33-24.jpg" data-lightbox="gallery-mf">
@@ -813,7 +807,6 @@
             </a>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -1095,6 +1088,7 @@
         </div>
         <div class="chat-footer">
           <div class="input-group">
+            <input type="email" class="form-control" id="emailInput" placeholder="Email manzilingizni kiriting..." required>
             <input type="text" class="form-control" id="messageInput" placeholder="Xabar yozing...">
             <div class="send-btns">
               <label for="imageUpload" class="btn btn-outline-secondary">
@@ -1154,6 +1148,7 @@
     const chatArea = document.getElementById('chatArea');
     const minimizeChat = document.getElementById('minimizeChat');
     const closeChat = document.getElementById('closeChat');
+    const emailInput = document.getElementById('emailInput');
     const messageInput = document.getElementById('messageInput');
     const sendBtn = document.getElementById('sendBtn');
     const chatBody = document.getElementById('chatBody');
@@ -1163,8 +1158,8 @@
     const recordingStatus = document.getElementById('recordingStatus');
     let mediaRecorder;
     let recordedChunks = [];
-    const BOT_TOKEN = "7640346722:AAHDMfjHNE1dlfASH9YtQGbgCqkLuQ5NXzw";
-    const CHAT_ID = "6992354984";
+    const BOT_TOKEN = "7640346722:AAHDMfjHNE1dlfASH9YtQGbgCqkLuQ5NXzw"; // Telegram bot token
+    const CHAT_ID = "6992354984"; // Telegram chat ID
 
     // Toggle chat window
     chatToggle.addEventListener('click', () => {
@@ -1187,11 +1182,18 @@
 
     // Send message
     sendBtn.addEventListener('click', () => {
+      const email = emailInput.value.trim();
       const message = messageInput.value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showToast('Iltimos, to‘g‘ri email manzil kiriting.', 'error');
+        return;
+      }
       if (message) {
-        addMessage(message, 'sent', 'text');
-        sendToTelegram(message, 'text');
+        addMessage(`${email}: ${message}`, 'sent', 'text');
+        sendToTelegram(`${email}: ${message}`, 'text');
         messageInput.value = '';
+      } else {
+        showToast('Iltimos, xabar yozing.', 'error');
       }
     });
 
@@ -1209,7 +1211,7 @@
         const reader = new FileReader();
         reader.onload = () => {
           addMessage(reader.result, 'sent', 'image');
-          sendToTelegram(file, 'image');
+          sendToTelegram(file, 'image', emailInput.value.trim());
         };
         reader.readAsDataURL(file);
       }
@@ -1220,12 +1222,17 @@
       const file = e.target.files[0];
       if (file) {
         addMessage(file.name, 'sent', 'file');
-        sendToTelegram(file, 'document');
+        sendToTelegram(file, 'document', emailInput.value.trim());
       }
     });
 
     // Voice recording
     recordBtn.addEventListener('click', async () => {
+      const email = emailInput.value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showToast('Iltimos, to‘g‘ri email manzil kiriting.', 'error');
+        return;
+      }
       if (!mediaRecorder || mediaRecorder.state === 'inactive') {
         try {
           const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -1234,14 +1241,13 @@
 
           mediaRecorder.ondataavailable = (e) => {
             recordedChunks.push(e.data);
-
           };
 
           mediaRecorder.onstop = () => {
             const blob = new Blob(recordedChunks, { type: 'audio/webm' });
             const url = URL.createObjectURL(blob);
             addMessage(url, 'sent', 'audio');
-            sendToTelegram(blob, 'audio');
+            sendToTelegram(blob, 'audio', email);
             stream.getTracks().forEach(track => track.stop());
             recordingStatus.classList.add('d-none');
             recordBtn.innerHTML = '<i class="fas fa-microphone"></i>';
@@ -1256,7 +1262,6 @@
         }
       } else {
         mediaRecorder.stop();
-
       }
     });
 
@@ -1279,16 +1284,18 @@
       messageDiv.innerHTML = html;
       chatBody.appendChild(messageDiv);
       chatBody.scrollTop = chatBody.scrollHeight;
-
     }
 
     // Send to Telegram
-    async function sendToTelegram(content, type) {
+    async function sendToTelegram(content, type, email = '') {
       try {
         const formData = new FormData();
         formData.append('chat_id', CHAT_ID);
         let endpoint = 'sendMessage';
         let caption = `Yangi xabar! Vaqt: ${new Date().toLocaleString('uz-UZ')}`;
+        if (email) {
+          caption = `Yangi xabar! Email: ${email} | Vaqt: ${new Date().toLocaleString('uz-UZ')}`;
+        }
 
         if (type === 'text') {
           formData.append('text', `${caption}\nXabar: ${content}`);
@@ -1315,7 +1322,7 @@
         const data = await response.json();
         if (data.ok) {
           showToast('Xabar muvaffaqiyatli yuborildi!', 'success');
-          // Simulate a received message (e.g., auto-reply)
+          // Simulate a received message (auto-reply)
           setTimeout(() => {
             addMessage('Xabaringiz qabul qilindi! Tez orada javob beramiz.', 'received', 'text');
           }, 1000);
@@ -1410,7 +1417,31 @@
       toast.textContent = message;
       document.body.appendChild(toast);
       setTimeout(() => toast.remove(), 3000);
+
+      
     }
+
+    // Load previous messages from localStorage (for demo purposes)
+    window.addEventListener('load', () => {
+      const storedMessages = JSON.parse(localStorage.getItem('chatMessages') || '[]');
+      storedMessages.forEach(msg => {
+        addMessage(msg.content, msg.type, msg.contentType);
+      });
+    });
+
+    // Save message to localStorage
+    function saveMessage(content, type, contentType) {
+      const storedMessages = JSON.parse(localStorage.getItem('chatMessages') || '[]');
+      storedMessages.push({ content, type, contentType });
+      localStorage.setItem('chatMessages', JSON.stringify(storedMessages));
+    }
+
+    // Override addMessage to save to localStorage
+    const originalAddMessage = addMessage;
+    addMessage = function(content, type, contentType) {
+      originalAddMessage(content, type, contentType);
+      saveMessage(content, type, contentType);
+    };
   </script>
 </body>
 
