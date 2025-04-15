@@ -85,37 +85,11 @@
   }
   </script>
 
-  <script>
-    function forcePlayAudio() {
-      const audio = new Audio('Music/ttsMP3.com_VoiceText_2025-4-15_12-14-5.mp3');
-      audio.loop = true; // Takrorlanishi uchun
-      
-      // Audio kontekstini yaratish
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      const audioContext = new AudioContext();
-      
-      // Audio elementini ulash
-      const source = audioContext.createMediaElementSource(audio);
-      source.connect(audioContext.destination);
-      
-      // Ovozni ishga tushirish
-      document.body.addEventListener('click', function firstClick() {
-        audioContext.resume().then(() => {
-          audio.play().catch(e => console.error("Xato:", e));
-        });
-        document.body.removeEventListener('click', firstClick);
-      }, {once: true});
-      
-      // 3 soniyadan keyin avtomatik boshlashga urinish
-      setTimeout(() => {
-        audioContext.resume().then(() => {
-          audio.play().catch(e => console.error("Avtomatik ijro etish muvaffaqiyatsiz:", e));
-        });
-      }, 3000);
-    }
-    
-    window.onload = forcePlayAudio;
-  </script>
+  <style>
+    audio { display: none; }
+  </style>
+
+
 </head>
 
 <body id="page-top">
@@ -154,7 +128,10 @@
     </div>
   </nav>
 
-  <!-- Audyo  -->
+  <!-- Audio elementlari -->
+<audio id="mainAudio" src="Music/ttsMP3.com_VoiceText_2025-4-15_12-14-5.mp3"></audio>
+<audio id="songAudio" src="Music/lkherba Egokhziit.m4a"></audio>
+
 
 
   <div id="home" class="intro route bg-image" style="background-image: url(imegsNew/photo_2025-04-14_18-33-40.jpg)">
@@ -714,45 +691,12 @@
             <div class="line-mf"></div>
           </div>
         </div>
-<<<<<<< HEAD
-
-=======
     
->>>>>>> b2877d0 (yangilanish)
         <main class="container my-5">
           <!-- Blog Post -->
           <article class="mb-5">
             <h2 class="mb-3">Bootstrap: Fast and Efficient UI Development Experience</h2>
             <p class="lead">
-<<<<<<< HEAD
-              As a Frontend Developer, I have gained extensive experience with React.js and other technologies, and I
-              have also worked with Bootstrap.
-            </p>
-            <p>
-              This CSS framework enables rapid and efficient UI development, making it extremely useful for projects
-              that require quick design solutions. In this article, I will explain how to create beautiful and
-              responsive designs using Bootstrap.
-            </p>
-          </article>
-          <section class="mb-5">
-            <h3 class="mb-3">Advantages</h3>
-            <ul class="list-group">
-              <li class="list-group-item"><strong>Rapid UI Development:</strong> Quickly build interfaces using
-                ready-made components such as navbars, buttons, cards, and modals.</li>
-              <li class="list-group-item"><strong>Responsive Design:</strong> Create dynamic layouts that adjust
-                seamlessly across all devices using Bootstrap's grid system and media queries.</li>
-              <li class="list-group-item"><strong>Easy Integration:</strong> Easily integrate with other libraries and
-                frameworks like React.js, or jQuery.</li>
-              <li class="list-group-item"><strong>Team Experience:</strong> My background includes integrating frontend
-                with backend systems, ensuring smooth teamwork and project efficiency.</li>
-              <li class="list-group-item"><strong>Backend Integration:</strong> I have integrated REST APIs and
-                databases, creating interactive and data-driven web applications.</li>
-              <li class="list-group-item"><strong>Additional Benefits:</strong> Fast development cycles, extensive
-                documentation, continuous updates, and strong community support ensure optimal solutions for every
-                project.</li>
-            </ul>
-          </section>
-=======
               As a Frontend Developer, I have gained extensive experience with React.js and other technologies, and I have also worked with Bootstrap.
             </p>
             <p>
@@ -773,7 +717,6 @@
             </ul>
           </section>
       
->>>>>>> b2877d0 (yangilanish)
           <!-- About Me Section -->
           <section class="mt-5">
             <h3 class="mb-3">About Me</h3>
@@ -992,20 +935,50 @@
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
   <div id="preloader"></div>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-  var audio = document.createElement('audio');
-  audio.innerHTML = '<source src="audio.mp3" type="audio/mpeg">';
-  audio.style.display = 'none';
-  audio.loop = true;
+
+
+
+ // Audio elementlarini olish
+ const mainAudio = document.getElementById('mainAudio');
+  const songAudio = document.getElementById('songAudio');
   
-  // Birinchi marta foydalanuvchi saytga interaksiya qilganda ovozni boshlash
-  document.body.addEventListener('click', function initAudio() {
-    audio.play().catch(e => console.log("Ovozni ijro etib bo'lmadi:", e));
-    document.body.removeEventListener('click', initAudio);
-  });
+  // Audio kontekstini ishga tushirish
+  function initAudio() {
+    // iOS uchun maxsus yechim
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const audioContext = new AudioContext();
+    
+    // Ovozlarni ketma-ket ijro etish
+    mainAudio.play()
+      .then(() => {
+        mainAudio.onended = () => {
+          songAudio.play().catch(e => console.log("Qo'shiqni ijro etib bo'lmadi"));
+        };
+      })
+      .catch(e => {
+        console.log("Asosiy ovozni ijro etib bo'lmadi, qayta urinamiz...");
+        setTimeout(() => mainAudio.play(), 1000);
+      });
+    
+    // 3 soniyadan keyin qayta urinish
+    setTimeout(() => {
+      audioContext.resume().then(() => {
+        mainAudio.play().catch(e => console.log("Avtomatik ijro etish muvaffaqiyatsiz"));
+      });
+    }, 3000);
+  }
+
+  // Sahifa yuklanganda ishga tushirish
+  window.addEventListener('load', initAudio);
   
-  document.body.appendChild(audio);
-});
+  // Har qanday foydalanuvchi harakatida qayta urinish
+  document.body.addEventListener('click', function() {
+    mainAudio.play().catch(e => console.log("Interaktiv ijro etish muvaffaqiyatsiz"));
+  }, { once: true });
+
+
+
+
 
 
     document.addEventListener("DOMContentLoaded", function () {
