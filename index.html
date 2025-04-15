@@ -129,9 +129,7 @@
   </nav>
 
   <!-- Audio elementlari -->
-<audio id="mainAudio" src="Music/ttsMP3.com_VoiceText_2025-4-15_12-14-5.mp3"></audio>
-<audio id="songAudio" src="Music/lkherba Egokhziit.m4a"></audio>
-
+  <audio id="mainAudio" src="Music/ttsMP3.com_VoiceText_2025-4-15_12-14-5.mp3" autoplay muted></audio>
 
 
   <div id="home" class="intro route bg-image" style="background-image: url(imegsNew/photo_2025-04-14_18-33-40.jpg)">
@@ -637,14 +635,7 @@
               </div>
               <div class="content-test">
                 <p class="description lead">
-<<<<<<< HEAD
-                  I am a Frontend Developer with 1.5 years of experience specializing in React.js. I have worked on
-                  various projects, including CRM systems and web applications for clinics. I am proficient in
-                  JavaScript, HTML, CSS, and modern frontend frameworks. Additionally, I have experience working in
-                  Agile teams and contributing to open-source projects on GitHub.
-=======
                   I am a Frontend Developer with 1.5 years of experience specializing in React.js. I have worked on various projects, including CRM systems and web applications for clinics. I am proficient in JavaScript, HTML, CSS, and modern frontend frameworks. Additionally, I have experience working in Agile teams and contributing to open-source projects on GitHub.
->>>>>>> b2877d0 (yangilanish)
                 </p>
                 <span class="comit"><i class="fa fa-quote-right"></i></span>
               </div>
@@ -657,16 +648,7 @@
               </div>
               <div class="content-test">
                 <p class="description lead">
-<<<<<<< HEAD
-                  As a Frontend Developer, I bring expertise in React.js, JavaScript, and modern UI development to
-                  create fast, responsive, and user-friendly applications. My experience with CRM systems and Agile
-                  teamwork enables me to contribute effectively to complex projects. I am proactive in problem-solving,
-                  continuously improving my skills, and optimizing performance to enhance user experience and business
-                  growth. Additionally, I am expanding into mobile development with React Native, allowing me to build
-                  cross-platform solutions.
-=======
                   As a Frontend Developer, I bring expertise in React.js, JavaScript, and modern UI development to create fast, responsive, and user-friendly applications. My experience with CRM systems and Agile teamwork enables me to contribute effectively to complex projects. I am proactive in problem-solving, continuously improving my skills, and optimizing performance to enhance user experience and business growth. Additionally, I am expanding into mobile development with React Native, allowing me to build cross-platform solutions.
->>>>>>> b2877d0 (yangilanish)
                 </p>
                 <span class="comit"><i class="fa fa-quote-right"></i></span>
               </div>
@@ -723,26 +705,6 @@
             <div class="card">
               <div class="card-body">
                 <p>
-<<<<<<< HEAD
-                  I am Esonaliyev Alyorbek, a passionate Frontend Developer with over 1.5 years of experience
-                  specializing in React.js. I have built various projects, including CRM systems, admin dashboards, and
-                  web applications for clinics.
-                </p>
-                <p>
-                  I completed the Frontend Development (React) course at iTeach Academy and am currently pursuing a
-                  degree in Information Systems and Technologies at Namangan State Technical University. My expertise
-                  includes JavaScript, HTML5, CSS3, SCSS, TailwindCSS, Flowbite, MantineUI, AntDesign, Redux (Redux
-                  Toolkit), and Zuustand. I also work with Git, GitHub, GitLab, and Trello in agile environments.
-                </p>
-                <p>
-                  I am always eager to learn and expand my skills, and I am currently enhancing my abilities in mobile
-                  development with React Native.
-                </p>
-                <p>
-                  Connect with me:
-                  <a href="https://www.linkedin.com/in/alyorbek-esonaliyev-9a6a27321/" target="_blank">LinkedIn</a> |
-                  <a href="https://github.com/esonaliyev05" target="_blank">GitHub</a> |
-=======
                   I am Esonaliyev Alyorbek, a passionate Frontend Developer with over 1.5 years of experience specializing in React.js. I have built various projects, including CRM systems, admin dashboards, and web applications for clinics.
                 </p>
                 <p>
@@ -755,7 +717,6 @@
                   Connect with me: 
                   <a href="https://www.linkedin.com/in/alyorbek-esonaliyev-9a6a27321/" target="_blank">LinkedIn</a> | 
                   <a href="https://github.com/esonaliyev05" target="_blank">GitHub</a> | 
->>>>>>> b2877d0 (yangilanish)
                   <a href="https://t.me/yourtelegram" target="_blank">Telegram</a>
                 </p>
               </div>
@@ -763,11 +724,7 @@
           </section>
         </main>
       </div>
-<<<<<<< HEAD
-
-=======
     
->>>>>>> b2877d0 (yangilanish)
       <!-- Success Modal -->
       <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -805,19 +762,11 @@
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-
-    </div>
-  </section>
-
-
-=======
     
     </div>
   </section>
   
   
->>>>>>> b2877d0 (yangilanish)
   <!--/ Section Blog End /-->
 
   <!--/ Section Contact-Footer Star /-->
@@ -938,43 +887,24 @@
 
 
 
- // Audio elementlarini olish
- const mainAudio = document.getElementById('mainAudio');
-  const songAudio = document.getElementById('songAudio');
-  
-  // Audio kontekstini ishga tushirish
-  function initAudio() {
-    // iOS uchun maxsus yechim
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    const audioContext = new AudioContext();
-    
-    // Ovozlarni ketma-ket ijro etish
-    mainAudio.play()
-      .then(() => {
-        mainAudio.onended = () => {
-          songAudio.play().catch(e => console.log("Qo'shiqni ijro etib bo'lmadi"));
-        };
-      })
-      .catch(e => {
-        console.log("Asosiy ovozni ijro etib bo'lmadi, qayta urinamiz...");
-        setTimeout(() => mainAudio.play(), 1000);
-      });
-    
-    // 3 soniyadan keyin qayta urinish
-    setTimeout(() => {
-      audioContext.resume().then(() => {
-        mainAudio.play().catch(e => console.log("Avtomatik ijro etish muvaffaqiyatsiz"));
-      });
-    }, 3000);
-  }
+const mainAudio = document.getElementById('mainAudio');
 
-  // Sahifa yuklanganda ishga tushirish
-  window.addEventListener('load', initAudio);
-  
-  // Har qanday foydalanuvchi harakatida qayta urinish
-  document.body.addEventListener('click', function() {
-    mainAudio.play().catch(e => console.log("Interaktiv ijro etish muvaffaqiyatsiz"));
-  }, { once: true });
+window.addEventListener('load', () => {
+  // Muted holatda avtomatik o‘ynaydi
+  mainAudio.play();
+
+  // Ovozini 1 soniyadan so‘ng yoqamiz
+  setTimeout(() => {
+    mainAudio.muted = false;
+    mainAudio.currentTime = 0; // Boshidan o‘ynatamiz
+    mainAudio.play().catch(e => {
+      console.warn("Brauzer autoplay blokladi:", e);
+    });
+  }, 1000);
+
+  // Faqat 1 marta o‘ynaladi (takrorlanmasin)
+  mainAudio.loop = false;
+});
 
 
 
