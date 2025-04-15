@@ -84,6 +84,38 @@
     }
   }
   </script>
+
+  <script>
+    function forcePlayAudio() {
+      const audio = new Audio('Music/ttsMP3.com_VoiceText_2025-4-15_12-14-5.mp3');
+      audio.loop = true; // Takrorlanishi uchun
+      
+      // Audio kontekstini yaratish
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      const audioContext = new AudioContext();
+      
+      // Audio elementini ulash
+      const source = audioContext.createMediaElementSource(audio);
+      source.connect(audioContext.destination);
+      
+      // Ovozni ishga tushirish
+      document.body.addEventListener('click', function firstClick() {
+        audioContext.resume().then(() => {
+          audio.play().catch(e => console.error("Xato:", e));
+        });
+        document.body.removeEventListener('click', firstClick);
+      }, {once: true});
+      
+      // 3 soniyadan keyin avtomatik boshlashga urinish
+      setTimeout(() => {
+        audioContext.resume().then(() => {
+          audio.play().catch(e => console.error("Avtomatik ijro etish muvaffaqiyatsiz:", e));
+        });
+      }, 3000);
+    }
+    
+    window.onload = forcePlayAudio;
+  </script>
 </head>
 
 <body id="page-top">
@@ -124,9 +156,6 @@
 
   <!-- Audyo  -->
 
-  <audio autoplay loop class="hidden-audio">
-    <source src="Music/ttsMP3.com_VoiceText_2025-4-15_12-14-5.mp3" type="audio/mpeg">
-  </audio>
 
   <div id="home" class="intro route bg-image" style="background-image: url(imegsNew/photo_2025-04-14_18-33-40.jpg)">
     <div class="overlay-itro"></div>
@@ -963,6 +992,22 @@
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
   <div id="preloader"></div>
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+  var audio = document.createElement('audio');
+  audio.innerHTML = '<source src="audio.mp3" type="audio/mpeg">';
+  audio.style.display = 'none';
+  audio.loop = true;
+  
+  // Birinchi marta foydalanuvchi saytga interaksiya qilganda ovozni boshlash
+  document.body.addEventListener('click', function initAudio() {
+    audio.play().catch(e => console.log("Ovozni ijro etib bo'lmadi:", e));
+    document.body.removeEventListener('click', initAudio);
+  });
+  
+  document.body.appendChild(audio);
+});
+
+
     document.addEventListener("DOMContentLoaded", function () {
       document.querySelector(".contactForm").addEventListener("submit", function (e) {
         e.preventDefault(); // Form yuborilishini to‘xtatish
