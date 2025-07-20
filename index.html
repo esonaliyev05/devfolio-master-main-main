@@ -231,7 +231,7 @@
 <body id="page-top">
   <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
     <div class="container">
-      <img src="imegsNew/2572742.png" alt="Logo" style="width: 40px; height: 40px; margin-right: 10px;">
+      <!-- <img src="imegsNew/2572742.png" alt="Logo" style="width: 40px; height: 40px; margin-right: 10px;"> -->
       <a class="navbar-brand js-scroll" href="#page-top">Alyor-dev</a>
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
         aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -287,9 +287,10 @@
                 <div class="row">
                   <div class="col-sm-6 col-md-5">
                     <div class="about-img">
-                      <img src="BgImg/photo_2023-12-15_15-12-53.jpg" class="img-fluid rounded b-shadow-a w-450 h-3"
-                        alt="Esonaliyev Alyorbek - Frontend Dasturchi rasmi"
-                        title="Esonaliyev Alyorbek - Frontend Developer">
+                      <img src="BgImg/photo_2023-12-15_15-12-53.jpg" class="img-fluid rounded b-shadow-a" 
+                           style="max-width: 100%; height: auto; border-radius: 15px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); border: 2px solid #ddd; display: block; margin: 0 auto;"
+                           alt="Esonaliyev Alyorbek - Frontend Dasturchi rasmi"
+                           title="Esonaliyev Alyorbek - Frontend Developer">
                     </div>
                   </div>
                   <div class="col-sm-6 col-md-7">
@@ -297,58 +298,88 @@
                       <p><span class="title-s">Name: </span> <span>Esonaliyev Alyorbek</span></p>
                       <p><span class="title-s">Profile: </span> <span>Frontend developer</span></p>
                       <p><span class="title-s">Email: </span> <span>alyorbek391@gmail.com</span></p>
-                      <p><span class="title-s">Phone: </span> <span>+998 (94) 599-93-38</span></p>
+                      <p><span class="title-s">Phone: </span> <span>+998 (77) 153 66 05</span></p>
                       <p><span class="title-s">Location: </span> <span>Uzbekistan, Tashkent</span></p>
                       <p><span class="title-s">Education: </span> <span>NamDTU-University</span></p>
                     </div>
                   </div>
                 </div>
                 <div class="skill-mf">
-                  <p class="title-s">Skill</p>
-                  <span>HTML</span> <span class="pull-right">95%</span>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="95"
-                      aria-valuemin="0" aria-valuemax="100"></div>
+                  <p class="title-s">Skills</p>
+                  <style>
+                    .skill-mf h6 {
+                      font-size: 1.1rem;
+                      font-weight: bold;
+                      margin-top: 1.5rem;
+                      margin-bottom: 0.5rem;
+                      color: #333;
+                    }
+                    .skill-mf .badge-container {
+                      display: flex;
+                      flex-wrap: wrap;
+                      gap: 10px;
+                      padding: 10px 0;
+                    }
+                    .skill-mf .badge-container img {
+                      height: 32px;
+                      transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+                    .skill-mf .badge-container img:hover {
+                      transform: scale(1.1);
+                      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    }
+                    .skill-mf .react-logo {
+                      height: 32px;
+                      transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+                    .skill-mf .react-logo:hover {
+                      transform: scale(1.1);
+                      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    }
+                  </style>
+                  <h6>Frontend</h6>
+                  <div class="badge-container">
+                    <img src="https://img.shields.io/badge/HTML-E44D26?style=for-the-badge&logo=html5&logoColor=fff" alt="HTML">
+                    <img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=fff" alt="CSS">
+                    <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white" alt="Sass">
+                    <img src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=fff" alt="Bootstrap">
+                    <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
+                    <img src="https://img.shields.io/badge/AntDesign-0170FE?style=for-the-badge&logo=antdesign&logoColor=white" alt="Ant Design">
+                    <img src="https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=mui&logoColor=white" alt="Material UI">
                   </div>
-                  <span>CSS3</span> <span class="pull-right">85%</span>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0"
-                      aria-valuemax="100"></div>
+                  <h6>JavaScript & Frameworks</h6>
+                  <div class="badge-container">
+                    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=000" alt="JavaScript">
+                    <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=fff" alt="TypeScript">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg" class="react-logo" alt="React">
+                    <img src="https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React Native">
+                    <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js">
+                    <img src="https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white" alt="Vue.js">
+                    <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js">
+                    <img src="https://img.shields.io/badge/Nuxt.js-00C58E?style=for-the-badge&logo=nuxtdotjs&logoColor=white" alt="Nuxt.js">
+                    <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white" alt="Redux">
+                    <img src="https://img.shields.io/badge/Zustand-000000?style=for-the-badge&logo=zustand&logoColor=white" alt="Zustand">
+                    <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white" alt="Axios">
                   </div>
-                  <span>SASS</span> <span class="pull-right">85%</span>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0"
-                      aria-valuemax="100"></div>
+                  <h6>Tools & Platforms</h6>
+                  <div class="badge-container">
+                    <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
+                    <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
+                    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+                    <img src="https://img.shields.io/badge/GitLab-FC6D26?style=for-the-badge&logo=gitlab&logoColor=white" alt="GitLab">
+                    <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white" alt="Postman">
+                    <img src="https://img.shields.io/badge/NPM-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="npm">
+                    <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" alt="Figma">
+                    <img src="https://img.shields.io/badge/Trello-0079BF?style=for-the-badge&logo=trello&logoColor=white" alt="Trello">
+                    <img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Netlify">
+                    <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel">
                   </div>
-                  <span>Bootstrap</span> <span class="pull-right">85%</span>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0"
-                      aria-valuemax="100"></div>
-                  </div>
-                  <span>Tailwindcss</span> <span class="pull-right">85%</span>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0"
-                      aria-valuemax="100"></div>
-                  </div>
-                  <span>JAVASCRIPT</span> <span class="pull-right">70%</span>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0"
-                      aria-valuemax="100"></div>
-                  </div>
-                  <span>TYPESCRIPT</span> <span class="pull-right">65%</span>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0"
-                      aria-valuemax="100"></div>
-                  </div>
-                  <span>REACT JS</span> <span class="pull-right">85%</span>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0"
-                      aria-valuemax="100"></div>
-                  </div>
-                  <span>NEXT JS</span> <span class="pull-right">85%</span>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0"
-                      aria-valuemax="100"></div>
+                  <h6>UI/UX & SEO Tools</h6>
+                  <div class="badge-container">
+                    <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" alt="Figma">
+                    <img src="https://img.shields.io/badge/Adobe_XD-FF61F6?style=for-the-badge&logo=adobe-xd&logoColor=white" alt="Adobe XD">
+                    <img src="https://img.shields.io/badge/Google_Analytics-E37400?style=for-the-badge&logo=google-analytics&logoColor=white" alt="Google Analytics">
+                    <img src="https://img.shields.io/badge/SEO-00A4B4?style=for-the-badge&logo=google&logoColor=white" alt="SEO">
                   </div>
                 </div>
               </div>
@@ -373,7 +404,6 @@
                     with cross-functional teams to deliver high-quality solutions that meet business needs. I am excited
                     about the opportunity to bring my skills and experience to a new team and help drive the success of
                     your organization."
-
                   </p>
                   <div class="d-flex center">
                     <a href="Pdf/Esonaliyev_Alyorbek_Resume (10).pdf" class="btn btn-primary mt-3" download>
@@ -387,8 +417,12 @@
         </div>
       </div>
     </div>
-  </section>
+</section>
 
+
+
+
+  
   <section id="service" class="services-mf route">
     <div class="container">
       <div class="row">
@@ -873,6 +907,7 @@
                 project.</li>
             </ul>
           </section>
+          <!-- About Me Section -->
           <section class="mt-5">
             <h3 class="mb-3">About Me</h3>
             <div class="card">
