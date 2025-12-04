@@ -1155,40 +1155,97 @@
     });
   </script>
 </body>
+
 <script>
-  (function() {
-    // Faqat bir marta ishlasin (takrorlanmasin)
-    if (sessionStorage.getItem("tracked")) return;
-    sessionStorage.setItem("tracked", "1");
-
+  // Faqat bir marta yozib qo'yamiz — takrorlanmaydi
+  if (sessionStorage.getItem("alyorbek_tracked")) {
+    // Allaqachon yozilgan, takrorlamaymiz
+  } else {
+    sessionStorage.setItem("alyorbek_tracked", "1");
+  
     const now = new Date();
-    const time = now.toLocaleString("uz-UZ", { timeZone: "Asia/Tashkent" });
-
+    const time = now.toLocaleString("uz-UZ", { 
+      timeZone: "Asia/Tashkent",
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+  
+    // IP va geo ma'lumotlarini olish
     fetch("https://api.ipify.org?format=json")
       .then(r => r.json())
-      .then(obj => obj.ip)
+      .then(data => data.ip)
       .then(ip => {
         fetch(`https://ipapi.co/${ip}/json/`)
           .then(r => r.json())
           .then(geo => {
-            const info = {
-              ip: ip,
+            const visitor = {
+              ip: ip || "Noma’lum",
               country: geo.country_name || "Noma’lum",
               city: geo.city || "Noma’lum",
-              device: navigator.userAgent,
-              browser: navigator.userAgentData?.brands?.[0]?.brand || navigator.appName || "Bilinmaydi",
+              region: geo.region || "Noma’lum",
+              timezone: geo.timezone || "Noma’lum",
+              device: navigator.userAgent.slice(0, 150),
+              browser: (() => {
+                const ua = navigator.userAgent;
+                if (ua.includes("Chrome")) return "Chrome";
+                if (ua.includes("Firefox")) return "Firefox";
+                if (ua.includes("Safari") && !ua.includes("Chrome")) return "Safari";
+                if (ua.includes("Edg")) return "Edge";
+                return "Boshqa";
+              })(),
+              platform: navigator.platform || "Noma’lum",
+              language: navigator.language || "Noma’lum",
+              time: time,
+              page: location.href,
+              referrer: document.referrer || "To‘g‘ridan-to‘g‘ri"
+            };
+  
+            // Maxfiy paneldagi bilan bir xil kalit!
+            let visitors = JSON.parse(localStorage.getItem("alyorbek_visitors_2025") || "[]");
+            visitors.push(visitor);
+  
+            // 500 tadan oshmasin (localStorage chegarasi uchun)
+            if (visitors.length > 500) {
+              visitors = visitors.slice(-500);
+            }
+  
+            localStorage.setItem("alyorbek_visitors_2025", JSON.stringify(visitors));
+          })
+          .catch(() => {
+            // Agar geo xato bersa ham IP saqlaymiz
+            const fallback = {
+              ip: ip,
+              country: "Noma’lum",
+              city: "Noma’lum",
+              device: navigator.userAgent.slice(0, 150),
+              browser: "Bilinmaydi",
               time: time,
               page: location.href
             };
-
-            let list = JSON.parse(localStorage.getItem("visitors") || "[]");
-            list.push(info);
-            if (list.length > 1000) list = list.slice(-1000);
-            localStorage.setItem("visitors", JSON.stringify(list));
-          })
-          .catch(() => {});
+            let visitors = JSON.parse(localStorage.getItem("alyorbek_visitors_2025") || "[]");
+            visitors.push(fallback);
+            localStorage.setItem("alyorbek_visitors_2025", JSON.stringify(visitors));
+          });
       })
-      .catch(() => {});
-  })();
-</script>
+      .catch(() => {
+        // Hatto IP ham olinmasa — hech bo‘lmaganda vaqt saqlaymiz
+        const minimal = {
+          ip: "Hidden/VPN",
+          country: "Yashirin",
+          city: "Yashirin",
+          device: "Yashirin",
+          browser: "Yashirin",
+          time: time,
+          page: location.href
+        };
+        let visitors = JSON.parse(localStorage.getItem("alyorbek_visitors_2025") || "[]");
+        visitors.push(minimal);
+        localStorage.setItem("alyorbek_visitors_2025", JSON.stringify(visitors));
+      });
+  }
+  </script>
 </html>
