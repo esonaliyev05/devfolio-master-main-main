@@ -1,90 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Alyorbek Esonaliyev - Frontend Developer and Engineer</title>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Alyorbek Esonaliyev — Frontend Developer</title>
   <meta name="description"
-    content="Alyorbek Esonaliyev - Experienced Frontend Developer. Explore his projects, services, and personal blog.">
-  <meta name="keywords"
-    content="Alyorbek Esonaliyev, Alyorbekdev, frontend developer, web developer, programmer, portfolio, blog, JavaScript, React, freelancer">
-  <meta name="author" content="Alyorbek Esonaliyev">
-  <meta name="robots" content="index, follow">
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <!-- Canonical -->
-  <link rel="canonical" href="https://alyorbek.uz/">
-  <!-- Open Graph -->
-  <meta property="og:title" content="Alyorbek Esonaliyev - Frontend Developer and Engineer">
-  <meta property="og:description"
-    content="Learn more about Alyorbek Esonaliyev. Explore his portfolio, services, and blog posts.">
-  <meta property="og:image" content="imegsNew/photo_2024-08-07_16-53-01.jpg">
-  <meta property="og:url" content="https://alyorbek.uz/">
-  <meta property="og:type" content="website">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+    content="Alyorbek Esonaliyev — Frontend Developer. Portfolio, services, projects, blog and contact." />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Alyorbek Esonaliyev - Frontend Developer and Engineer">
-  <meta name="twitter:description"
-    content="Frontend developer Alyorbek Esonaliyev's portfolio and contact information.">
-  <meta name="twitter:image" content="https://alyorbek.uz/imegsNew/photo_2024-08-07_16-53-01.jpg">
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="theme-color" content="#ffffff">
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
 
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Alyorbek Esonaliyev",
-    "url": "https://alyorbek.uz",
-    "image": "imegsNew/photo_2024-08-07_16-53-01.jpg",
-    "sameAs": [
-      "https://www.linkedin.com/in/alyorbek-esonaliyev",
-      "https://twitter.com/alyorbek",
-      "https://github.com/esonaliyev05"
-    ],
-    "jobTitle": "Frontend Developer",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Freelancer"
-    }
-  }
-  </script>
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <!-- Styles (Preload & CSS) -->
-  <link rel="preload" href="css/style.css" as="style">
-  <link rel="preload" href="lib/bootstrap/css/bootstrap.min.css" as="style">
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link href="css/style.css" rel="stylesheet">
+  <!-- Theme -->
+  <meta name="theme-color" content="#0b1220" />
 
   <style>
-    .video-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
+    /* ====== Smooth rendering & custom effects ====== */
+    html {
+      scroll-behavior: smooth;
     }
 
+    /* Hide AOS before animate */
     [data-aos] {
       visibility: hidden;
     }
@@ -93,30 +36,134 @@
       visibility: visible;
     }
 
+    /* ====== Custom Gradient Text ====== */
+    .gradient-text {
+      background: linear-gradient(90deg, #22d3ee, #60a5fa, #a78bfa, #22d3ee);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      background-size: 200% 100%;
+      animation: gradmove 4s linear infinite;
+    }
+
+    @keyframes gradmove {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      100% {
+        background-position: 200% 50%;
+      }
+    }
+
+    /* ====== Fancy grain overlay ====== */
+    .grain::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .13;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+    }
+
+    /* ====== Loader (single) ====== */
     #preloader {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #fff;
-      z-index: 9999;
+      inset: 0;
+      z-index: 99999;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      background: radial-gradient(900px 520px at 18% 20%, rgba(34, 211, 238, 0.14), transparent 60%),
+        radial-gradient(800px 520px at 85% 75%, rgba(167, 139, 250, 0.16), transparent 55%),
+        linear-gradient(135deg, #070a12, #0b1220);
+      overflow: hidden;
     }
 
-    #preloader:after {
-      content: '';
-      width: 40px;
-      height: 40px;
-      border: 5px solid #007bff;
-      border-top: 5px solid transparent;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
+    #preloader::before {
+      content: "";
+      position: absolute;
+      width: 130%;
+      height: 130%;
+      background: conic-gradient(from 180deg,
+          rgba(34, 211, 238, .22),
+          rgba(96, 165, 250, .18),
+          rgba(167, 139, 250, .22),
+          rgba(34, 211, 238, .22));
+      filter: blur(40px);
+      opacity: .9;
+      animation: loaderGlow 3.2s linear infinite;
     }
 
-    @keyframes spin {
+    @keyframes loaderGlow {
+      0% {
+        transform: translate3d(-2%, -2%, 0) rotate(0deg);
+      }
+
+      100% {
+        transform: translate3d(2%, 2%, 0) rotate(360deg);
+      }
+    }
+
+    .loader-card {
+      position: relative;
+      width: min(480px, 92vw);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 22px;
+      overflow: hidden;
+    }
+
+    .loader-card::after {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.14), transparent 50%);
+      animation: pulseSoft 1.6s ease-in-out infinite;
+    }
+
+    @keyframes pulseSoft {
+      0% {
+        transform: scale(1);
+        opacity: .55;
+      }
+
+      50% {
+        transform: scale(1.2);
+        opacity: .35;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: .55;
+      }
+    }
+
+    .ring {
+      width: 58px;
+      height: 58px;
+      border-radius: 999px;
+      position: relative;
+      background: conic-gradient(from 0deg, #22d3ee, #60a5fa, #a78bfa, #22d3ee);
+      animation: spinRing 1s linear infinite;
+      box-shadow: 0 0 18px rgba(34, 211, 238, .25);
+    }
+
+    .ring::after {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border-radius: 999px;
+      background: rgba(7, 10, 18, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+    }
+
+    @keyframes spinRing {
       0% {
         transform: rotate(0deg);
       }
@@ -125,1127 +172,900 @@
         transform: rotate(360deg);
       }
     }
+
+    .bar {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      overflow: hidden;
+    }
+
+    .bar>i {
+      display: block;
+      height: 100%;
+      width: 30%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(34, 211, 238, 0.95), rgba(96, 165, 250, 0.95), rgba(167, 139, 250, 0.95));
+      animation: loadBar 1.35s ease-in-out infinite;
+      position: relative;
+    }
+
+    .bar>i::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+      transform: translateX(-60%);
+      animation: shimmer 1s linear infinite;
+    }
+
+    @keyframes loadBar {
+      0% {
+        width: 16%;
+      }
+
+      50% {
+        width: 88%;
+      }
+
+      100% {
+        width: 28%;
+      }
+    }
+
+    @keyframes shimmer {
+      0% {
+        transform: translateX(-60%);
+      }
+
+      100% {
+        transform: translateX(170%);
+      }
+    }
+
+    #preloader.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s ease;
+    }
+
+    /* ====== Floating background blobs (animated by JS) ====== */
+    .blob {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(28px);
+      opacity: .38;
+      will-change: transform;
+      transform: translate3d(0, 0, 0);
+    }
+
+    /* ====== Glass panel ====== */
+    .glass {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* ====== Fancy hover tilt ====== */
+    .tilt {
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    /* ====== Scroll progress bar ====== */
+    #scrollbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      z-index: 9999;
+      background: linear-gradient(90deg, #22d3ee, #60a5fa, #a78bfa);
+      box-shadow: 0 0 18px rgba(34, 211, 238, .35);
+    }
+
+    /* ====== Hero video overlay ====== */
+    .hero-overlay {
+      background: radial-gradient(800px 500px at 20% 15%, rgba(34, 211, 238, 0.18), transparent 55%),
+        radial-gradient(900px 520px at 78% 70%, rgba(167, 139, 250, 0.20), transparent 60%),
+        linear-gradient(180deg, rgba(2, 6, 23, 0.35), rgba(2, 6, 23, 0.75));
+    }
   </style>
-</head>
-
-<body id="page-top">
-  <div id="preloader"></div>
-
-  <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll" href="./secret-admin-panel.html">Alyor-dev</a>
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
-        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link js-scroll active" href="#home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll" href="#service">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll" href="#work">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll" href="#blog">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll" href="#contact">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <div id="home" class="intro route bg-image" style="position: relative;" data-aos="fade-in">
-    <video class="video-background" autoplay muted loop>
-      <source src="video/video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <div class="overlay-itro"></div>
-    <div class="intro-content display-table">
-      <div class="table-cell">
-        <div class="container">
-          <h1 class="intro-title mb-4">I am Alyorbek Esonaliyev</h1>
-          <p class="intro-subtitle"><span class="text-slider-items">Web Developer, Frontend Developer,</span><strong
-              class="text-slider"></strong></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <section id="about" class="about-mf sect-pt4 route" data-aos="fade-up">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="box-shadow-full">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="row">
-                  <div class="col-sm-6 col-md-5">
-                    <div class="about-img">
-                      <img src="BgImg/photo_2023-12-15_15-12-53.jpg" class="img-fluid rounded b-shadow-a"
-                        style="max-width: 100%; height: auto; border-radius: 15px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); border: 2px solid #ddd; display: block; margin: 0 auto;"
-                        alt="Alyorbek Esonaliyev - Frontend Developer Image"
-                        title="Alyorbek Esonaliyev - Frontend Developer">
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-md-7">
-                    <div class="about-info">
-                      <p><span class="title-s">Name: </span> <span>Alyorbek Esonaliyev</span></p>
-                      <p><span class="title-s">Profile: </span> <span>Frontend Developer</span></p>
-                      <p><span class="title-s">Email: </span> <span>alyorbek391@gmail.com</span></p>
-                      <p><span class="title-s">Phone: </span> <span>+998 (77) 153 66 05</span></p>
-                      <p><span class="title-s">Location: </span> <span>Uzbekistan, Tashkent</span></p>
-                      <p><span class="title-s">Education: </span> <span>NamDTU University</span></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="skill-mf">
-                  <p class="title-s">Skills</p>
-                  <style>
-                    .skill-mf h6 {
-                      font-size: 1.1rem;
-                      font-weight: bold;
-                      margin-top: 1.5rem;
-                      margin-bottom: 0.5rem;
-                      color: #333;
-                    }
-
-                    .skill-mf .badge-container {
-                      display: flex;
-                      flex-wrap: wrap;
-                      gap: 10px;
-                      padding: 10px 0;
-                    }
-
-                    .skill-mf .badge-container img {
-                      height: 32px;
-                      transition: transform 0.3s ease, box-shadow 0.3s ease;
-                    }
-
-                    .skill-mf .badge-container img:hover {
-                      transform: scale(1.1);
-                      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                    }
-
-                    .skill-mf .react-logo {
-                      height: 32px;
-                      transition: transform 0.3s ease, box-shadow 0.3s ease;
-                    }
-
-                    .skill-mf .react-logo:hover {
-                      transform: scale(1.1);
-                      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                    }
-                  </style>
-                  <h6>Frontend</h6>
-                  <div class="badge-container">
-                    <img src="https://img.shields.io/badge/HTML-E44D26?style=for-the-badge&logo=html5&logoColor=fff"
-                      alt="HTML">
-                    <img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=fff"
-                      alt="CSS">
-                    <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white"
-                      alt="Sass">
-                    <img
-                      src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=fff"
-                      alt="Bootstrap">
-                    <img
-                      src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"
-                      alt="Tailwind CSS">
-                    <img
-                      src="https://img.shields.io/badge/AntDesign-0170FE?style=for-the-badge&logo=antdesign&logoColor=white"
-                      alt="Ant Design">
-                    <img
-                      src="https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=mui&logoColor=white"
-                      alt="Material UI">
-                  </div>
-                  <h6>JavaScript and Frameworks</h6>
-                  <div class="badge-container">
-                    <img
-                      src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=000"
-                      alt="JavaScript">
-                    <img
-                      src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=fff"
-                      alt="TypeScript">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg"
-                      class="react-logo" alt="React">
-                    <img
-                      src="https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"
-                      alt="React Native">
-                    <img
-                      src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white"
-                      alt="Next.js">
-                    <img
-                      src="https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white"
-                      alt="Vue.js">
-                    <img
-                      src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"
-                      alt="Node.js">
-                    <img
-                      src="https://img.shields.io/badge/Nuxt.js-00C58E?style=for-the-badge&logo=nuxtdotjs&logoColor=white"
-                      alt="Nuxt.js">
-                    <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white"
-                      alt="Redux">
-                    <img
-                      src="https://img.shields.io/badge/Zustand-000000?style=for-the-badge&logo=zustand&logoColor=white"
-                      alt="Zustand">
-                    <img src="https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white"
-                      alt="Axios">
-                  </div>
-                  <h6>Tools and Platforms</h6>
-                  <div class="badge-container">
-                    <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white"
-                      alt="Vite">
-                    <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white"
-                      alt="Git">
-                    <img
-                      src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"
-                      alt="GitHub">
-                    <img
-                      src="https://img.shields.io/badge/GitLab-FC6D26?style=for-the-badge&logo=gitlab&logoColor=white"
-                      alt="GitLab">
-                    <img
-                      src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white"
-                      alt="Postman">
-                    <img src="https://img.shields.io/badge/NPM-CB3837?style=for-the-badge&logo=npm&logoColor=white"
-                      alt="npm">
-                    <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"
-                      alt="Figma">
-                    <img
-                      src="https://img.shields.io/badge/Trello-0079BF?style=for-the-badge&logo=trello&logoColor=white"
-                      alt="Trello">
-                    <img
-                      src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white"
-                      alt="Netlify">
-                    <img
-                      src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white"
-                      alt="Vercel">
-                  </div>
-                  <h6>UI/UX and SEO Tools</h6>
-                  <div class="badge-container">
-                    <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"
-                      alt="Figma">
-                    <img
-                      src="https://img.shields.io/badge/Adobe_XD-FF61F6?style=for-the-badge&logo=adobe-xd&logoColor=white"
-                      alt="Adobe XD">
-                    <img
-                      src="https://img.shields.io/badge/Google_Analytics-E37400?style=for-the-badge&logo=google-analytics&logoColor=white"
-                      alt="Google Analytics">
-                    <img src="https://img.shields.io/badge/SEO-00A4B4?style=for-the-badge&logo=google&logoColor=white"
-                      alt="SEO">
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="about-me pt-4 pt-md-0">
-                  <div class="title-box-2">
-                    <h5 class="title-left">About Me</h5>
-                  </div>
-                  <p class="lead">
-                    I am Alyorbek Esonaliyev, residing in Namangan, Uzbekistan.
-                  </p>
-                  <p class="lead">
-                    Born in 2005, I started programming in 2023. I am currently involved in numerous projects.
-                  </p>
-                  <p class="lead">
-                    As a Frontend developer with 1.5 years of experience in React, I focus on creating user-friendly and
-                    dynamic interfaces that meet client needs and exceed user expectations. I have expertise in
-                    JavaScript, HTML, CSS, and related libraries and frameworks, with a proven track record of
-                    delivering high-quality code tailored to project requirements and deadlines.
-
-                    I thrive in collaborative, fast-paced, and Agile environments, with experience working in
-                    cross-functional teams to deliver high-quality solutions that meet business needs. I am excited
-                    about the opportunity to bring my skills and expertise to a new team and contribute to the
-                    organization’s success.
-                  </p>
-                  <div class="d-flex center">
-                    <a href="Pdf/Esonaliyev_Alyorbek_Resume (10).pdf" class="btn btn-primary mt-3" download>
-                      <i class="fa-solid fa-download"></i> Download Resume
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="service" class="services-mf route" data-aos="fade-up">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="title-box text-center">
-            <h3 class="title-a">Services</h3>
-            <p class="subtitle-a">My skills and expertise</p>
-            <div class="line-mf"></div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="service-box">
-            <div class="service-ico">
-              <span class="ico-circle"><i class="ion-code-working"></i></span>
-            </div>
-            <div class="service-content">
-              <h2 class="s-title">Computer Science Tutor</h2>
-              <p class="s-description text-center">
-                I am an experienced tutor capable of teaching fundamental computer skills.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="service-box">
-            <div class="service-ico">
-              <span class="ico-circle"><i class="ion-code-working"></i></span>
-            </div>
-            <div class="service-content">
-              <h2 class="s-title">Frontend Development Tutor</h2>
-              <p class="s-description text-center">
-                I have experience teaching frontend development.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="service-box">
-            <div class="service-ico">
-              <span class="ico-circle"><i class="ion-code-working"></i></span>
-            </div>
-            <div class="service-content">
-              <h2 class="s-title">Frontend Development</h2>
-              <p class="s-description text-center">
-                I am an experienced frontend developer with extensive expertise.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4" aria-label="Frontend Development and SEO Services">
-          <div class="service-box">
-            <div class="service-ico">
-              <span class="ico-circle" aria-hidden="true"><i class="ion-code-working"></i></span>
-            </div>
-            <div class="service-content">
-              <h2 class="s-title">Frontend and SEO</h2>
-              <p class="s-description text-center">
-                I am an experienced frontend developer and SEO specialist, creating responsive websites and improving
-                search engine visibility.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4" aria-label="UX/UI and Web Design Services">
-          <div class="service-box">
-            <div class="service-ico">
-              <span class="ico-circle" aria-hidden="true"><i class="ion-code-working"></i></span>
-            </div>
-            <div class="service-content">
-              <h2 class="s-title">UX/UI and Web Design</h2>
-              <p class="s-description text-center">
-                I design modern, clean, responsive, and user-friendly websites with a focus on UX/UI principles and
-                visual appeal.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-counter paralax-mf bg-image" style="background-image: url(img/counters-bg.jpg)"
-    data-aos="zoom-in">
-    <div class="overlay-mf"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3 col-lg-3">
-          <div class="counter-box">
-            <div class="counter-ico">
-              <span class="ico-circle"><i class="ion-checkmark-round"></i></span>
-            </div>
-            <div class="counter-num">
-              <p class="counter">50</p>
-              <span class="counter-text">COMPLETED PROJECTS</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3 col-lg-3">
-          <div class="counter-box pt-4 pt-md-0">
-            <div class="counter-ico">
-              <span class="ico-circle"><i class="ion-ios-calendar-outline"></i></span>
-            </div>
-            <div class="counter-num">
-              <p class="counter">1.5</p>
-              <span class="counter-text">YEARS OF EXPERIENCE</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3 col-lg-3">
-          <div class="counter-box pt-4 pt-md-0">
-            <div class="counter-ico">
-              <span class="ico-circle"><i class="ion-ios-people"></i></span>
-            </div>
-            <div class="counter-num">
-              <p class="counter">200</p>
-              <span class="counter-text">TOTAL CLIENTS</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3 col-lg-3">
-          <div class="counter-box pt-4 pt-md-0">
-            <div class="counter-ico">
-              <span class="ico-circle"><i class="ion-ribbon-a"></i></span>
-            </div>
-            <div class="counter-num">
-              <p class="counter">10</p>
-              <span class="counter-text">AWARDS WON</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <section id="work" class="portfolio-mf sect-pt4 route" data-aos="fade-up">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="title-box text-center">
-            <h3 class="title-a">Portfolio</h3>
-            <p class="subtitle-a">My completed projects portfolio</p>
-            <div class="line-mf"></div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="work-box">
-            <a href="img/photo_2025-02-21_22-33-24.jpg" data-lightbox="gallery-mf">
-              <div class="work-img">
-                <img src="img/photo_2025-02-21_22-33-24.jpg" alt="" class="img-fluid">
-              </div>
-              <div class="work-content">
-                <div class="row">
-                  <div class="col-sm-8">
-                    <h2 class="w-title">Aventour uz</h2>
-                    <div class="w-more">
-                      <span class="w-ctegory">Website</span> / <span class="w-date">18 Sep. 2024</span>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="w-like">
-                      <span class="ion-ios-plus-outline"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="work-box">
-            <a href="img/photo_2025-02-21_22-46-22.jpg" data-lightbox="gallery-mf">
-              <div class="work-img">
-                <img src="img/photo_2025-02-21_22-46-22.jpg" alt="" class="img-fluid">
-              </div>
-              <div class="work-content">
-                <div class="row">
-                  <div class="col-sm-8">
-                    <h2 class="w-title">Terra-car</h2>
-                    <div class="w-more">
-                      <span class="w-ctegory">Website</span> / <span class="w-date">20 Sep. 2024</span>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="w-like">
-                      <span class="ion-ios-plus-outline"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="work-box">
-            <a href="img/photo_2025-02-21_23-06-47.jpg" data-lightbox="gallery-mf">
-              <div class="work-img">
-                <img src="img/photo_2025-02-21_23-06-47.jpg" alt="" class="img-fluid">
-              </div>
-              <div class="work-content">
-                <div class="row">
-                  <div class="col-sm-8">
-                    <h2 class="w-title">Printzaprvka.uz</h2>
-                    <div class="w-more">
-                      <span class="w-ctegory">Website</span> / <span class="w-date">18 Sep. 2018</span>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="w-like">
-                      <span class="ion-ios-plus-outline"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="work-box">
-            <a href="img/photo_2025-02-21_23-13-09 (2).jpg" data-lightbox="gallery-mf">
-              <div class="work-img">
-                <img src="img/photo_2025-02-21_23-10-24.jpg" alt="" class="img-fluid">
-              </div>
-              <div class="work-content">
-                <div class="row">
-                  <div class="col-sm-8">
-                    <h2 class="w-title">ADMIN-PANEL</h2>
-                    <div class="w-more">
-                      <span class="w-ctegory">Website</span> / <span class="w-date">18 Sep. 2018</span>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="w-like">
-                      <span class="ion-ios-plus-outline"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="work-box">
-            <a href="img/photo_2025-02-21_23-16-26.jpg" data-lightbox="gallery-mf">
-              <div class="work-img">
-                <img src="img/photo_2025-02-21_23-16-26.jpg" alt="" class="img-fluid">
-              </div>
-              <div class="work-content">
-                <div class="row">
-                  <div class="col-sm-8">
-                    <h2 class="w-title">Medicio</h2>
-                    <div class="w-more">
-                      <span class="w-ctegory">Website</span> / <span class="w-date">18 Sep. 2024</span>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="w-like">
-                      <span class="ion-ios-plus-outline"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="work-box">
-            <a href="img/photo_2025-02-21_23-22-08.jpg" data-lightbox="gallery-mf">
-              <div class="work-img">
-                <img src="img/photo_2025-02-21_23-22-08.jpg" alt="" class="img-fluid">
-              </div>
-              <div class="work-content">
-                <div class="row">
-                  <div class="col-sm-8">
-                    <h2 class="w-title">aqvo-crm uz</h2>
-                    <div class="w-more">
-                      <span class="w-ctegory">Website</span> / <span class="w-date">18 Sep. 2017</span>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="w-like">
-                      <span class="ion-ios-plus-outline"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="work-box">
-            <a href="imegsNew/Screenshot 2025-03-13 231236.png" data-lightbox="gallery-mf">
-              <div class="work-img">
-                <img src="imegsNew/Screenshot 2025-03-13 231236.png" alt="" class="img-fluid">
-              </div>
-              <div class="work-content">
-                <div class="row">
-                  <div class="col-sm-8">
-                    <h2 class="w-title">aqvo uz</h2>
-                    <div class="w-more">
-                      <span class="w-ctegory">Website</span> / <span class="w-date">18 Dec. 2024</span>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="w-like">
-                      <span class="ion-ios-plus-outline"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="work-box">
-            <a href="imegsNew/Screenshot 2025-06-15 204004.png" data-lightbox="gallery-mf">
-              <div class="work-img">
-                <img src="imegsNew/Screenshot 2025-06-15 204004.png" alt="" class="img-fluid">
-              </div>
-              <div class="work-content">
-                <div class="row">
-                  <div class="col-sm-8">
-                    <h2 class="w-title">mycloud uz</h2>
-                    <div class="w-more">
-                      <span class="w-ctegory">Website</span> / <span class="w-date">18 Dec. 2024</span>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="w-like">
-                      <span class="ion-ios-plus-outline"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="work-box">
-            <a href="imegsNew/Screenshot 2025-07-19 155627.png" data-lightbox="gallery-mf">
-              <div class="work-img">
-                <img src="imegsNew/Screenshot 2025-07-19 155627.png" alt="" class="img-fluid">
-              </div>
-              <div class="work-content">
-                <div class="row">
-                  <div class="col-sm-8">
-                    <h2 class="w-title">mycloud-user uz</h2>
-                    <div class="w-more">
-                      <span class="w-ctegory">Website</span> / <span class="w-date">18 May 2025</span>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="w-like">
-                      <span class="ion-ios-plus-outline"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="work-box">
-            <a href="imegsNew/Screenshot 2025-07-09 155137.png" data-lightbox="gallery-mf">
-              <div class="work-img">
-                <img src="imegsNew/Screenshot 2025-07-09 155137.png" alt="" class="img-fluid">
-              </div>
-              <div class="work-content">
-                <div class="row">
-                  <div class="col-sm-8">
-                    <h2 class="w-title">Vision</h2>
-                    <div class="w-more">
-                      <span class="w-ctegory">Website</span> / <span class="w-date">18 Dec. 2024</span>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="w-like">
-                      <span class="ion-ios-plus-outline"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="testimonials paralax-mf bg-image" style="background-image: url(img/overlay-bg.jpg)" data-aos="fade-in">
-    <div class="overlay-mf"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div id="testimonial-mf" class="owl-carousel owl-theme">
-            <div class="testimonial-box">
-              <div class="author-test">
-                <img src="imegsNew/photo_2025-06-09_21-08-46.jpg" alt="Alyorbek Esonaliyev - Frontend Developer Image"
-                  title="Alyorbek Esonaliyev - Frontend Developer" class="rounded-circle b-shadow-a"
-                  style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
-                <span class="author">Alyorbek Esonaliyev</span>
-              </div>
-              <div class="content-test">
-                <p class="description lead">
-                  I am a Frontend developer with 1.5 years of experience in React.js. I have worked on various projects,
-                  including CRM systems and web applications for clinics. I am proficient in JavaScript, HTML, CSS, and
-                  modern frontend frameworks. I also have experience contributing to open-source projects on GitHub and
-                  working in Agile teams.
-                </p>
-                <span class="comit"><i class="fa fa-quote-right"></i></span>
-              </div>
-            </div>
-            <div class="testimonial-box">
-              <div class="author-test">
-                <img src="imegsNew/photo_2025-06-09_23-14-32.jpg" alt="Alyorbek Esonaliyev - Frontend Developer Image"
-                  title="Alyorbek Esonaliyev - Frontend Developer" class="rounded-circle b-shadow-a"
-                  style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
-                <span class="author">Alyorbek Esonaliyev</span>
-              </div>
-              <div class="content-test">
-                <p class="description lead">
-                  As a Frontend developer, I bring expertise in React.js, JavaScript, and modern UI development,
-                  enabling the creation of responsive and user-friendly applications. My experience with CRM systems and
-                  Agile teamwork ensures efficient contributions to complex projects. I am proactive in problem-solving,
-                  continuously improving my skills, and optimizing user experience and business growth. I am currently
-                  expanding into mobile development with React Native, allowing for cross-platform solutions.
-                </p>
-                <span class="comit"><i class="fa fa-quote-right"></i></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <section id="blog" class="blog-mf sect-pt4 route" data-aos="fade-up">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="title-box text-center">
-            <h3 class="title-a">Blog</h3>
-            <p class="subtitle-a">Welcome to my blog and resume page.</p>
-            <div class="line-mf"></div>
-          </div>
-        </div>
-        <main class="container my-5">
-          <article class="mb-5">
-            <h2 class="mb-3">Bootstrap: Rapid and Efficient UI Development Experience</h2>
-            <p class="lead">
-              As a Frontend developer, I have extensive experience with React.js and other technologies, including
-              Bootstrap.
-            </p>
-            <p>
-              This CSS framework enables rapid and efficient UI development, which is highly beneficial for projects
-              requiring quick design solutions. In this article, I explain how to create attractive and responsive
-              designs using Bootstrap.
-            </p>
-          </article>
-          <section class="mb-5">
-            <h3 class="mb-3">Advantages</h3>
-            <ul class="list-group">
-              <li class="list-group-item"><strong>Rapid UI Development:</strong> Pre-built components like navbars,
-                buttons, cards, and modals enable fast interface creation.</li>
-              <li class="list-group-item"><strong>Responsive Design:</strong> Bootstrap’s grid system and media queries
-                allow for dynamic layouts across all devices.</li>
-              <li class="list-group-item"><strong>Easy Integration:</strong> Seamless integration with libraries and
-                frameworks like React.js or jQuery.</li>
-              <li class="list-group-item"><strong>Team Collaboration:</strong> My experience includes integrating
-                frontend with backend systems, ensuring smooth teamwork and project efficiency.</li>
-              <li class="list-group-item"><strong>Backend Integration:</strong> I have integrated with REST APIs and
-                databases, creating interactive and data-driven web applications.</li>
-              <li class="list-group-item"><strong>Additional Benefits:</strong> Fast development cycles, comprehensive
-                documentation, regular updates, and strong community support ensure optimal solutions for every project.
-              </li>
-            </ul>
-          </section>
-          <section class="mt-5">
-            <h3 class="mb-3">About Me</h3>
-            <div class="card">
-              <div class="card-body">
-                <p>
-                  I am Alyorbek Esonaliyev, a passionate Frontend developer with over 1.5 years of experience in
-                  React.js. I have worked on various projects, including CRM systems, admin panels, and web applications
-                  for clinics.
-                </p>
-                <p>
-                  I studied at <strong>iTeach Academy</strong>, where I assisted as a teaching assistant. I am currently
-                  pursuing a degree in <strong>Information Systems and Technologies</strong> at <em>Namangan State
-                    Technical University</em>, while deepening my practical skills through real-world projects.
-                </p>
-                <p>
-                  My technical skills include: <br>
-                  <strong>Languages and Tools</strong>: JavaScript (ES6+), TypeScript, HTML5, CSS3, SCSS/SASS<br>
-                  <strong>Frameworks and Libraries</strong>: React.js, Next.js, Redux Toolkit, Zustand<br>
-                  <strong>UI Libraries</strong>: Tailwind CSS, Flowbite, Ant Design, Mantine UI<br>
-                  <strong>Version Control and Agile Tools</strong>: Git, GitHub, GitLab, Trello
-                </p>
-                <p>
-                  I follow best practices for clean code and performance optimization and thrive in Agile, collaborative
-                  environments. I am currently expanding into mobile development with <strong>React Native</strong>,
-                  creating cross-platform applications.
-                </p>
-                <p>
-                  I am open to new challenges and collaboration opportunities where I can contribute and grow. Let’s
-                  connect and build something amazing together!
-                </p>
-                <p>
-                  <strong>Contact Me:</strong><br>
-                  <a href="https://www.linkedin.com/in/alyorbek-esonaliyev-9a6a27321/" target="_blank"
-                    rel="noopener noreferrer">LinkedIn</a> |
-                  <a href="https://github.com/esonaliyev05" target="_blank" rel="noopener noreferrer">GitHub</a> |
-                  <a href="https://t.me/yourtelegram" target="_blank" rel="noopener noreferrer">Telegram</a>
-                </p>
-              </div>
-            </div>
-          </section>
-        </main>
-      </div>
-      <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header bg-success text-white">
-              <h5 class="modal-title" id="successModalLabel">Message Sent!</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-center">
-              <i class="bi bi-check-circle-fill text-success" style="font-size: 3rem;"></i>
-              <p class="mt-3">✅ Your message has been successfully sent!</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header bg-danger text-white">
-              <h5 class="modal-title" id="errorModalLabel">Error Occurred!</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body text-center">
-              <i class="bi bi-exclamation-triangle-fill text-danger" style="font-size: 3rem;"></i>
-              <p class="mt-3">❌ Message not sent. Please try again!</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(img/overlay-bg.jpg)"
-    data-aos="fade-in">
-    <div class="overlay-mf"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="contact-mf">
-            <div id="contact" class="box-shadow-full">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="title-box-2">
-                    <h5 class="title-left">Send Us a Message</h5>
-                  </div>
-                  <div>
-                    <form action="" method="post" role="form" class="contactForm" id="contactForm">
-                      <div id="sendmessage">Your message has been sent. Thank you!</div>
-                      <div id="errormessage"></div>
-                      <div class="row">
-                        <div class="col-md-12 mb-3">
-                          <div class="form-group">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
-                              data-rule="minlen:4" data-msg="Please enter at least 4 characters" />
-                            <div class="validation"></div>
-                          </div>
-                        </div>
-                        <div class="col-md-12 mb-3">
-                          <div class="form-group">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
-                              data-rule="email" data-msg="Please enter a valid email" />
-                            <div class="validation"></div>
-                          </div>
-                        </div>
-                        <div class="col-md-12 mb-3">
-                          <div class="form-group">
-                            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
-                              data-rule="minlen:4" data-msg="Please enter at least 4 characters for the subject" />
-                            <div class="validation"></div>
-                          </div>
-                        </div>
-                        <div class="col-md-12 mb-3">
-                          <div class="form-group">
-                            <textarea class="form-control" name="message" rows="5" data-rule="required"
-                              data-msg="Please write a message" placeholder="Message"></textarea>
-                            <div class="validation"></div>
-                          </div>
-                        </div>
-                        <div class="col-md-12">
-                          <button type="button" class="button button-a button-big button-rouded"
-                            onclick="sendFormData()">Send Message</button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="title-box-2 pt-4 pt-md-0">
-                    <h5 class="title-left">Contact</h5>
-                  </div>
-                  <div class="more-info">
-                    <p class="lead">
-                      If you have questions, ideas, or collaboration opportunities, please reach out! Use the contact
-                      form to send a message.
-                    </p>
-                    <ul class="list-ico">
-                      <li><span class="ion-ios-location"></span> Uzbekistan, Namangan Region</li>
-                      <li><span class="ion-ios-telephone"></span> +998 (94) 599-93-38</li>
-                      <li><span class="ion-email"></span> alyorbek391@gmail.com</li>
-                    </ul>
-                  </div>
-                  <div class="socials">
-                    <ul>
-                      <li><a href="https://www.facebook.com/esonaliyev.alyorbek"><span class="ico-circle"><i
-                              class="ion-social-facebook"></i></span></a></li>
-                      <li><a href="https://www.instagram.com/esonaliyev_alyorbek"><span class="ico-circle"><i
-                              class="ion-social-instagram"></i></span></a></li>
-                      <li><a href="https://t.me/Esonaliyev_Alyorbek"><span class="ico-circle"><i
-                              class="fa-brands fa-telegram"></i></span></a></li>
-                      <li><a href="https://www.linkedin.com/in/alyorbek-esonaliyev-9a6a27321/"><span
-                            class="ico-circle"><i class="ion-social-linkedin"></i></span></a></li>
-                      <li><a href="https://github.com/esonaliyev05"><span class="ico-circle"><i
-                              class="fa-brands fa-github"></i></span></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="copyright-box">
-              <p class="copyright">© Copyright <strong>Alyordev</strong>. All Rights Reserved</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </section>
-
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/jquery/jquery-migrate.min.js"></script>
-  <script src="lib/popper/popper.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/counterup/jquery.waypoints.min.js"></script>
-  <script src="lib/counterup/jquery.counterup.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/lightbox/js/lightbox.min.js"></script>
-  <script src="lib/typed/typed.min.js"></script>
-  <script src="contactform/contactform.js"></script>
-  <script src="js/main.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    AOS.init({
-      duration: 1000,
-      once: true
-    });
-
-    window.addEventListener('load', () => {
-      const preloader = document.getElementById('preloader');
-      preloader.style.display = 'none';
-    });
-
-    const BOT_TOKEN = "7640346722:AAHDMfjHNE1dlfASH9YtQGbgCqkLuQ5NXzw";
-    const CHAT_ID = "6992354984";
-
-    async function sendFormData() {
-      try {
-        const name = document.getElementById('name').value || 'Not provided';
-        const email = document.getElementById('email').value || 'Not provided';
-        const subject = document.getElementById('subject').value || 'Not provided';
-        const message = document.getElementById('message').value || 'Not provided';
-
-        if (!name || name.length < 4) {
-          showToast('Please enter a valid name (at least 4 characters).', 'error');
-          return;
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            ui: ["ui-sans-serif", "system-ui", "Segoe UI", "Inter", "Arial"],
+          },
+          boxShadow: {
+            glow: "0 0 22px rgba(34, 211, 238, .25)",
+          }
         }
-        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          showToast('Please enter a valid email address.', 'error');
-          return;
-        }
-        if (!subject || subject.length < 4) {
-          showToast('Please enter a valid subject (at least 4 characters).', 'error');
-          return;
-        }
-        if (!message) {
-          showToast('Please write a message.', 'error');
-          return;
-        }
-
-        const TEXT = `
-📬 *New Message!*  
-🕒 *Sent Time:* ${new Date().toLocaleString('en-US')}  
-👤 *Name:* ${name}  
-📧 *Email:* ${email}  
-📝 *Subject:* ${subject}  
-💬 *Message:* ${message}
-        `;
-
-        const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ chat_id: CHAT_ID, text: TEXT, parse_mode: 'Markdown' }),
-        });
-
-        const data = await response.json();
-        if (data.ok) {
-          const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-          successModal.show();
-          document.getElementById('contactForm').reset();
-        } else {
-          console.error('Telegram error:', data);
-          const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
-          errorModal.show();
-        }
-      } catch (error) {
-        console.error('Error occurred:', error);
-        const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
-        errorModal.show();
       }
     }
-
-    function showToast(message, type = 'error') {
-      const toast = document.createElement('div');
-      toast.style.position = 'fixed';
-      toast.style.bottom = '20px';
-      toast.style.right = '20px';
-      toast.style.padding = '10px 20px';
-      toast.style.background = type === 'error' ? '#dc3545' : '#28a745';
-      toast.style.color = 'white';
-      toast.style.borderRadius = '5px';
-      toast.style.zIndex = '1000';
-      toast.textContent = message;
-      document.body.appendChild(toast);
-      setTimeout(() => toast.remove(), 3000);
-    }
-
-    window.addEventListener('load', () => {
-      const contactForm = document.getElementById('contactForm');
-      if (contactForm) {
-        contactForm.addEventListener('submit', async (event) => {
-          event.preventDefault();
-          await sendFormData();
-        });
-      }
-    });
   </script>
-</body>
+</head>
 
-<script>
-  // Faqat bir marta yozib qo'yamiz — takrorlanmaydi
-  if (sessionStorage.getItem("alyorbek_tracked")) {
-    // Allaqachon yozilgan, takrorlamaymiz
-  } else {
-    sessionStorage.setItem("alyorbek_tracked", "1");
-  
-    const now = new Date();
-    const time = now.toLocaleString("uz-UZ", { 
-      timeZone: "Asia/Tashkent",
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit'
+<body class="font-ui text-white bg-slate-950 overflow-x-hidden">
+
+  <!-- Scroll progress -->
+  <div id="scrollbar"></div>
+
+  <!-- Loader -->
+  <div id="preloader" aria-label="Loading">
+    <div class="loader-card">
+      <div class="relative z-10 flex items-center gap-3">
+        <div class="ring" aria-hidden="true"></div>
+        <div class="min-w-0">
+          <p class="text-sm tracking-wide text-white/90 font-semibold">Alyor-dev Portfolio</p>
+          <p class="text-xs text-white/60 mt-1">Optimizing assets & preparing UI…</p>
+        </div>
+      </div>
+      <div class="relative z-10 mt-4 bar"><i></i></div>
+      <div class="relative z-10 mt-3 flex items-center justify-between text-[11px] text-white/55">
+        <span>UI / Animations</span>
+        <span class="gradient-text font-semibold">Tailwind Creative</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background stage (animated) -->
+  <div id="bgStage" class="fixed inset-0 -z-10 grain">
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-950 to-slate-900"></div>
+
+    <!-- Blobs -->
+    <div id="blob1" class="blob w-[520px] h-[520px] bg-cyan-400/70 -left-40 -top-40"></div>
+    <div id="blob2" class="blob w-[560px] h-[560px] bg-indigo-400/70 -right-56 top-24"></div>
+    <div id="blob3" class="blob w-[480px] h-[480px] bg-fuchsia-400/70 left-1/3 -bottom-56"></div>
+
+    <!-- Subtle grid -->
+    <div class="absolute inset-0 opacity-[0.08]"
+      style="background-image: linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px); background-size: 64px 64px;">
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="fixed top-0 left-0 right-0 z-50">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="mt-3 rounded-2xl glass">
+        <div class="flex items-center justify-between px-4 py-3">
+          <a href="#home" class="flex items-center gap-2">
+            <span
+              class="inline-flex w-9 h-9 rounded-xl bg-white/10 border border-white/10 items-center justify-center shadow-glow">
+              <i class="fa-solid fa-bolt text-cyan-300"></i>
+            </span>
+            <div class="leading-tight">
+              <p class="text-sm font-semibold tracking-wide">Alyor-dev</p>
+              <p class="text-[11px] text-white/55 -mt-[2px]">Frontend • React • UI</p>
+            </div>
+          </a>
+
+          <nav class="hidden md:flex items-center gap-1 text-sm">
+            <a class="navlink px-3 py-2 rounded-xl hover:bg-white/10 text-white/80" href="#about">About</a>
+            <a class="navlink px-3 py-2 rounded-xl hover:bg-white/10 text-white/80" href="#services">Services</a>
+            <a class="navlink px-3 py-2 rounded-xl hover:bg-white/10 text-white/80" href="#projects">Projects</a>
+            <a class="navlink px-3 py-2 rounded-xl hover:bg-white/10 text-white/80" href="#blog">Blog</a>
+            <a class="navlink px-3 py-2 rounded-xl hover:bg-white/10 text-white/80" href="#contact">Contact</a>
+          </nav>
+
+          <div class="flex items-center gap-2">
+            <a href="#contact"
+              class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 transition">
+              <i class="fa-regular fa-paper-plane text-cyan-200"></i>
+              <span class="text-sm">Let’s talk</span>
+            </a>
+            <button id="menuBtn"
+              class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 border border-white/10 hover:bg-white/15 transition">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 px-4 py-3">
+          <div class="grid gap-2 text-sm">
+            <a class="px-3 py-2 rounded-xl hover:bg-white/10 text-white/80" href="#about">About</a>
+            <a class="px-3 py-2 rounded-xl hover:bg-white/10 text-white/80" href="#services">Services</a>
+            <a class="px-3 py-2 rounded-xl hover:bg-white/10 text-white/80" href="#projects">Projects</a>
+            <a class="px-3 py-2 rounded-xl hover:bg-white/10 text-white/80" href="#blog">Blog</a>
+            <a class="px-3 py-2 rounded-xl hover:bg-white/10 text-white/80" href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="relative min-h-[100svh] pt-28">
+    <div class="absolute inset-0 -z-10">
+      <!-- video optional: replace src -->
+      <video class="absolute inset-0 w-full h-full object-cover opacity-50" autoplay muted loop playsinline preload="metadata">
+        <source src="video/video.mp4" type="video/mp4" />
+      </video>
+      <div class="absolute inset-0 hero-overlay"></div>
+    </div>
+
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div data-aos="fade-up" class="relative">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-xs text-white/75">
+            <span class="w-2 h-2 rounded-full bg-cyan-300 shadow-glow"></span>
+            <span>Available for projects • Remote</span>
+          </div>
+
+          <h1 class="mt-5 text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05]">
+            I craft <span class="gradient-text">premium UI</span><br />
+            with <span class="text-white/90">React</span> & <span class="text-white/90">Tailwind</span>.
+          </h1>
+
+          <p class="mt-5 text-white/70 text-base sm:text-lg leading-relaxed max-w-xl">
+            I’m <span class="text-white font-semibold">Alyorbek Esonaliyev</span> — frontend developer focused on
+            clean architecture, fast performance, and “wow” user experience. CRM/ERP/LMS style systems & modern landing
+            pages.
+          </p>
+
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="#projects"
+              class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-cyan-400/90 via-blue-400/90 to-indigo-400/90 text-slate-950 font-semibold hover:opacity-90 transition">
+              <i class="fa-solid fa-sparkles"></i>
+              <span>See Projects</span>
+            </a>
+            <a href="#about"
+              class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl glass hover:bg-white/10 transition">
+              <i class="fa-regular fa-user"></i>
+              <span>About Me</span>
+            </a>
+            <a href="#contact"
+              class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition">
+              <i class="fa-regular fa-message"></i>
+              <span>Contact</span>
+            </a>
+          </div>
+
+          <div class="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-xl">
+            <div class="rounded-2xl glass p-4">
+              <p class="text-sm text-white/60">Experience</p>
+              <p class="mt-1 text-2xl font-bold gradient-text">1.5+ yrs</p>
+            </div>
+            <div class="rounded-2xl glass p-4">
+              <p class="text-sm text-white/60">Focus</p>
+              <p class="mt-1 text-2xl font-bold">React</p>
+            </div>
+            <div class="rounded-2xl glass p-4">
+              <p class="text-sm text-white/60">Stack</p>
+              <p class="mt-1 text-2xl font-bold">UI/UX</p>
+            </div>
+            <div class="rounded-2xl glass p-4">
+              <p class="text-sm text-white/60">Performance</p>
+              <p class="mt-1 text-2xl font-bold">Fast</p>
+            </div>
+          </div>
+        </div>
+
+        <div data-aos="fade-left" class="relative">
+          <div class="tilt rounded-[28px] glass p-5 sm:p-6">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-red-400/80"></span>
+                <span class="w-3 h-3 rounded-full bg-yellow-300/80"></span>
+                <span class="w-3 h-3 rounded-full bg-green-300/80"></span>
+              </div>
+              <p class="text-xs text-white/55">Live UI preview</p>
+            </div>
+
+            <div class="mt-5 grid gap-4">
+              <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                <p class="text-sm text-white/70">Typing Title</p>
+                <p class="mt-2 text-xl font-bold">
+                  <span class="gradient-text" id="typing"></span><span class="text-white/50">|</span>
+                </p>
+              </div>
+
+              <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                <p class="text-sm text-white/70">Top Skills</p>
+                <div class="mt-3 flex flex-wrap gap-2 text-xs">
+                  <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">React</span>
+                  <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">Next.js</span>
+                  <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">Tailwind</span>
+                  <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">TypeScript</span>
+                  <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">API / Axios</span>
+                  <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">Zustand</span>
+                </div>
+              </div>
+
+              <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                <p class="text-sm text-white/70">Social</p>
+                <div class="mt-3 flex gap-2">
+                  <a class="w-11 h-11 rounded-2xl glass hover:bg-white/10 grid place-items-center"
+                    href="https://github.com/esonaliyev05" target="_blank" rel="noreferrer">
+                    <i class="fa-brands fa-github"></i>
+                  </a>
+                  <a class="w-11 h-11 rounded-2xl glass hover:bg-white/10 grid place-items-center"
+                    href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+                    <i class="fa-brands fa-linkedin"></i>
+                  </a>
+                  <a class="w-11 h-11 rounded-2xl glass hover:bg-white/10 grid place-items-center"
+                    href="https://t.me/Esonaliyev_Alyorbek" target="_blank" rel="noreferrer">
+                    <i class="fa-brands fa-telegram"></i>
+                  </a>
+                  <a class="w-11 h-11 rounded-2xl glass hover:bg-white/10 grid place-items-center"
+                    href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+                    <i class="fa-brands fa-instagram"></i>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="absolute -top-8 -right-8 w-28 h-28 rounded-[28px] bg-white/10 border border-white/10 blur-[1px]"
+            aria-hidden="true"></div>
+          <div class="absolute -bottom-10 -left-10 w-40 h-40 rounded-full bg-cyan-400/20 blur-2xl"
+            aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-16 sm:py-24">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="flex items-end justify-between gap-6">
+        <div data-aos="fade-up">
+          <p class="text-xs tracking-widest text-white/55 uppercase">About</p>
+          <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold">
+            A <span class="gradient-text">creative frontend</span> that ships fast.
+          </h2>
+        </div>
+        <div class="hidden md:block text-sm text-white/60 max-w-md" data-aos="fade-left">
+          Clean code, real UX, measurable performance. Agile work, API integrations, scalable UI architecture.
+        </div>
+      </div>
+
+      <div class="mt-10 grid lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 rounded-[28px] glass p-6 sm:p-8 tilt" data-aos="fade-up">
+          <div class="flex flex-col sm:flex-row gap-6">
+            <div class="w-full sm:w-52">
+              <div class="rounded-2xl overflow-hidden border border-white/10 bg-white/5">
+                <!-- Replace with your photo -->
+                <img src="BgImg/photo_2023-12-15_15-12-53.jpg" alt="Alyorbek" class="w-full h-56 object-cover" />
+              </div>
+              <div class="mt-3 grid grid-cols-2 gap-2 text-xs">
+                <span class="px-3 py-2 rounded-xl bg-white/10 border border-white/10 text-center">Namangan</span>
+                <span class="px-3 py-2 rounded-xl bg-white/10 border border-white/10 text-center">Uzbekistan</span>
+              </div>
+            </div>
+
+            <div class="flex-1">
+              <p class="text-white/70 leading-relaxed">
+                I’m <span class="text-white font-semibold">Alyorbek Esonaliyev</span> — born in 2005, started coding in
+                2023.
+                I build dynamic, user-friendly interfaces using <span class="text-white font-semibold">React</span>,
+                <span class="text-white font-semibold">Tailwind</span>, and modern frontend patterns.
+              </p>
+
+              <div class="mt-6 grid sm:grid-cols-2 gap-3">
+                <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                  <p class="text-white/60 text-xs">Specialties</p>
+                  <p class="mt-1 font-semibold">CRM / ERP / LMS UI</p>
+                  <p class="text-white/60 text-xs mt-1">Dashboards • Admin panels • Data UI</p>
+                </div>
+                <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+                  <p class="text-white/60 text-xs">Work style</p>
+                  <p class="mt-1 font-semibold">Agile, Team-Friendly</p>
+                  <p class="text-white/60 text-xs mt-1">API integration • Clean architecture</p>
+                </div>
+              </div>
+
+              <div class="mt-6 flex flex-wrap gap-2 text-xs">
+                <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">JavaScript</span>
+                <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">TypeScript</span>
+                <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">React</span>
+                <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">Next.js</span>
+                <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">Zustand</span>
+                <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">Redux</span>
+                <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">Ant Design</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-[28px] glass p-6 sm:p-7" data-aos="fade-left">
+          <p class="text-xs tracking-widest text-white/55 uppercase">Highlights</p>
+          <div class="mt-4 grid gap-3">
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+              <p class="text-sm text-white/70">Email</p>
+              <p class="font-semibold">alyorbek391@gmail.com</p>
+            </div>
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+              <p class="text-sm text-white/70">Phone</p>
+              <p class="font-semibold">+998 (77) 153 66 05</p>
+            </div>
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+              <p class="text-sm text-white/70">Education</p>
+              <p class="font-semibold">NamDTU University</p>
+            </div>
+            <a href="Pdf/Esonaliyev_Alyorbek_Resume (10).pdf" download
+              class="mt-2 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl bg-gradient-to-r from-cyan-400/90 via-blue-400/90 to-indigo-400/90 text-slate-950 font-semibold hover:opacity-90 transition">
+              <i class="fa-solid fa-download"></i>
+              <span>Download Resume</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="py-16 sm:py-24">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="text-center" data-aos="fade-up">
+        <p class="text-xs tracking-widest text-white/55 uppercase">Services</p>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold">
+          What I can build for <span class="gradient-text">your business</span>
+        </h2>
+        <p class="mt-4 text-white/65 max-w-2xl mx-auto">
+          Modern landing pages, admin dashboards, scalable UI components, and performance-focused frontend.
+        </p>
+      </div>
+
+      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card -->
+        <div class="tilt rounded-[28px] glass p-6 hover:bg-white/10 transition" data-aos="fade-up">
+          <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/10 grid place-items-center">
+            <i class="fa-solid fa-chalkboard-user text-cyan-200"></i>
+          </div>
+          <h3 class="mt-4 font-bold text-lg">Frontend Tutor</h3>
+          <p class="mt-2 text-white/65 text-sm leading-relaxed">
+            Teaching fundamentals and real-world practices: components, hooks, state, styling, and API integration.
+          </p>
+          <div class="mt-4 flex gap-2 text-xs">
+            <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">React</span>
+            <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">Tailwind</span>
+          </div>
+        </div>
+
+        <div class="tilt rounded-[28px] glass p-6 hover:bg-white/10 transition" data-aos="fade-up" data-aos-delay="80">
+          <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/10 grid place-items-center">
+            <i class="fa-solid fa-layer-group text-cyan-200"></i>
+          </div>
+          <h3 class="mt-4 font-bold text-lg">Admin Panel / Dashboard</h3>
+          <p class="mt-2 text-white/65 text-sm leading-relaxed">
+            Complex dashboards for CRM/ERP/LMS: tables, filters, charts UI, permissions, roles, and scalable structure.
+          </p>
+          <div class="mt-4 flex gap-2 text-xs">
+            <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">Data UI</span>
+            <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">UX</span>
+          </div>
+        </div>
+
+        <div class="tilt rounded-[28px] glass p-6 hover:bg-white/10 transition" data-aos="fade-up" data-aos-delay="160">
+          <div class="w-12 h-12 rounded-2xl bg-white/10 border border-white/10 grid place-items-center">
+            <i class="fa-solid fa-gauge-high text-cyan-200"></i>
+          </div>
+          <h3 class="mt-4 font-bold text-lg">Performance & SEO</h3>
+          <p class="mt-2 text-white/65 text-sm leading-relaxed">
+            Fast load times, responsive layouts, clean markup, and conversion-focused UI. Lighthouse-friendly builds.
+          </p>
+          <div class="mt-4 flex gap-2 text-xs">
+            <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">Speed</span>
+            <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">SEO</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="py-16 sm:py-24">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="flex flex-col md:flex-row items-end justify-between gap-6" data-aos="fade-up">
+        <div>
+          <p class="text-xs tracking-widest text-white/55 uppercase">Projects</p>
+          <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold">
+            Selected <span class="gradient-text">work</span>
+          </h2>
+          <p class="mt-3 text-white/65 max-w-xl">
+            Replace these placeholders with your real screenshots & links.
+          </p>
+        </div>
+        <a href="#contact"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl glass hover:bg-white/10 transition">
+          <i class="fa-regular fa-handshake"></i>
+          <span>Hire me</span>
+        </a>
+      </div>
+
+      <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Project card -->
+        <a class="tilt rounded-[28px] glass overflow-hidden hover:bg-white/10 transition block" data-aos="fade-up"
+          href="#" onclick="return false;">
+          <div class="h-44 bg-white/5 border-b border-white/10 grid place-items-center">
+            <div class="text-center px-4">
+              <p class="text-white/60 text-xs">Screenshot placeholder</p>
+              <p class="mt-1 font-semibold">Aventour UI</p>
+            </div>
+          </div>
+          <div class="p-5">
+            <p class="text-sm text-white/70">Website / Landing</p>
+            <p class="mt-1 font-bold text-lg">Aventour.uz</p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">UI</span>
+              <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">Responsive</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="tilt rounded-[28px] glass overflow-hidden hover:bg-white/10 transition block" data-aos="fade-up"
+          data-aos-delay="80" href="#" onclick="return false;">
+          <div class="h-44 bg-white/5 border-b border-white/10 grid place-items-center">
+            <div class="text-center px-4">
+              <p class="text-white/60 text-xs">Screenshot placeholder</p>
+              <p class="mt-1 font-semibold">CRM Dashboard</p>
+            </div>
+          </div>
+          <div class="p-5">
+            <p class="text-sm text-white/70">Admin Panel</p>
+            <p class="mt-1 font-bold text-lg">AQVO CRM</p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">Tables</span>
+              <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">Charts UI</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="tilt rounded-[28px] glass overflow-hidden hover:bg-white/10 transition block" data-aos="fade-up"
+          data-aos-delay="160" href="#" onclick="return false;">
+          <div class="h-44 bg-white/5 border-b border-white/10 grid place-items-center">
+            <div class="text-center px-4">
+              <p class="text-white/60 text-xs">Screenshot placeholder</p>
+              <p class="mt-1 font-semibold">Cloud UI</p>
+            </div>
+          </div>
+          <div class="p-5">
+            <p class="text-sm text-white/70">Web App</p>
+            <p class="mt-1 font-bold text-lg">MyCloud</p>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">Auth</span>
+              <span class="px-3 py-1.5 rounded-full bg-white/10 border border-white/10">API</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog" class="py-16 sm:py-24">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="text-center" data-aos="fade-up">
+        <p class="text-xs tracking-widest text-white/55 uppercase">Blog</p>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold">
+          Notes about <span class="gradient-text">UI engineering</span>
+        </h2>
+        <p class="mt-4 text-white/65 max-w-2xl mx-auto">
+          Example blog section. Later you can dynamically load posts or connect CMS.
+        </p>
+      </div>
+
+      <div class="mt-10 grid lg:grid-cols-3 gap-6">
+        <article class="tilt rounded-[28px] glass p-6 hover:bg-white/10 transition" data-aos="fade-up">
+          <p class="text-xs text-white/55">UI Framework</p>
+          <h3 class="mt-2 font-bold text-lg">Bootstrap vs Tailwind</h3>
+          <p class="mt-2 text-sm text-white/65 leading-relaxed">
+            Why Tailwind feels like “design system in code” and how to ship faster without losing quality.
+          </p>
+          <div class="mt-4 flex items-center justify-between text-xs text-white/55">
+            <span>5 min read</span>
+            <span class="gradient-text font-semibold">New</span>
+          </div>
+        </article>
+
+        <article class="tilt rounded-[28px] glass p-6 hover:bg-white/10 transition" data-aos="fade-up"
+          data-aos-delay="80">
+          <p class="text-xs text-white/55">Performance</p>
+          <h3 class="mt-2 font-bold text-lg">Make UI feel instant</h3>
+          <p class="mt-2 text-sm text-white/65 leading-relaxed">
+            Preload, lazy-load, reduce layout shift, and create smooth transitions that users love.
+          </p>
+          <div class="mt-4 flex items-center justify-between text-xs text-white/55">
+            <span>6 min read</span>
+            <span class="gradient-text font-semibold">Hot</span>
+          </div>
+        </article>
+
+        <article class="tilt rounded-[28px] glass p-6 hover:bg-white/10 transition" data-aos="fade-up"
+          data-aos-delay="160">
+          <p class="text-xs text-white/55">Architecture</p>
+          <h3 class="mt-2 font-bold text-lg">Scalable React folders</h3>
+          <p class="mt-2 text-sm text-white/65 leading-relaxed">
+            A clean approach to structure apps so features stay modular and easy to maintain.
+          </p>
+          <div class="mt-4 flex items-center justify-between text-xs text-white/55">
+            <span>7 min read</span>
+            <span class="gradient-text font-semibold">Pro</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-16 sm:py-24">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="grid lg:grid-cols-2 gap-6">
+        <div class="rounded-[28px] glass p-6 sm:p-8 tilt" data-aos="fade-up">
+          <p class="text-xs tracking-widest text-white/55 uppercase">Contact</p>
+          <h2 class="mt-2 text-3xl sm:text-4xl font-extrabold">
+            Let’s build something <span class="gradient-text">amazing</span>.
+          </h2>
+          <p class="mt-4 text-white/65 leading-relaxed">
+            Fill the form — I’ll get your message. (Telegram send is client-side demo. For production use backend.)
+          </p>
+
+          <div class="mt-6 grid sm:grid-cols-2 gap-3 text-sm">
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+              <p class="text-white/60 text-xs">Location</p>
+              <p class="mt-1 font-semibold">Uzbekistan • Namangan</p>
+            </div>
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+              <p class="text-white/60 text-xs">Email</p>
+              <p class="mt-1 font-semibold">alyorbek391@gmail.com</p>
+            </div>
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+              <p class="text-white/60 text-xs">Telegram</p>
+              <a class="mt-1 font-semibold hover:text-cyan-200 transition" href="https://t.me/Esonaliyev_Alyorbek"
+                target="_blank" rel="noreferrer">@Esonaliyev_Alyorbek</a>
+            </div>
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
+              <p class="text-white/60 text-xs">GitHub</p>
+              <a class="mt-1 font-semibold hover:text-cyan-200 transition" href="https://github.com/esonaliyev05"
+                target="_blank" rel="noreferrer">esonaliyev05</a>
+            </div>
+          </div>
+
+          <div class="mt-6 flex gap-2">
+            <a class="w-11 h-11 rounded-2xl glass hover:bg-white/10 grid place-items-center"
+              href="https://github.com/esonaliyev05" target="_blank" rel="noreferrer"><i
+                class="fa-brands fa-github"></i></a>
+            <a class="w-11 h-11 rounded-2xl glass hover:bg-white/10 grid place-items-center"
+              href="https://www.linkedin.com/" target="_blank" rel="noreferrer"><i
+                class="fa-brands fa-linkedin"></i></a>
+            <a class="w-11 h-11 rounded-2xl glass hover:bg-white/10 grid place-items-center"
+              href="https://t.me/Esonaliyev_Alyorbek" target="_blank" rel="noreferrer"><i
+                class="fa-brands fa-telegram"></i></a>
+            <a class="w-11 h-11 rounded-2xl glass hover:bg-white/10 grid place-items-center"
+              href="https://www.instagram.com/" target="_blank" rel="noreferrer"><i
+                class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="rounded-[28px] glass p-6 sm:p-8 tilt" data-aos="fade-left">
+          <p class="text-xs tracking-widest text-white/55 uppercase">Message</p>
+          <h3 class="mt-2 text-xl font-bold">Send me a message</h3>
+
+          <form id="contactForm" class="mt-6 grid gap-3">
+            <div class="grid sm:grid-cols-2 gap-3">
+              <input id="name" type="text" placeholder="Your name"
+                class="w-full rounded-2xl bg-white/5 border border-white/10 px-4 py-3 outline-none focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-300/20 transition" />
+              <input id="email" type="email" placeholder="Email address"
+                class="w-full rounded-2xl bg-white/5 border border-white/10 px-4 py-3 outline-none focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-300/20 transition" />
+            </div>
+            <input id="subject" type="text" placeholder="Subject"
+              class="w-full rounded-2xl bg-white/5 border border-white/10 px-4 py-3 outline-none focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-300/20 transition" />
+            <textarea id="message" rows="6" placeholder="Write your message..."
+              class="w-full rounded-2xl bg-white/5 border border-white/10 px-4 py-3 outline-none focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-300/20 transition"></textarea>
+
+            <button type="submit"
+              class="mt-2 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-cyan-400/90 via-blue-400/90 to-indigo-400/90 text-slate-950 font-semibold hover:opacity-90 transition">
+              <i class="fa-regular fa-paper-plane"></i>
+              <span>Send Message</span>
+            </button>
+
+            <p class="text-xs text-white/50 mt-1">
+              Tip: For production, send message through your backend to protect bot token.
+            </p>
+          </form>
+
+          <div id="toast" class="hidden mt-4 rounded-2xl p-4 border border-white/10 bg-white/5 text-sm"></div>
+        </div>
+      </div>
+
+      <footer class="mt-10 text-center text-xs text-white/50">
+        © <span id="year"></span> <span class="font-semibold text-white/70">Alyor-dev</span>. All Rights Reserved.
+      </footer>
+    </div>
+  </section>
+
+  <!-- Back to top -->
+  <button id="backToTop"
+    class="fixed bottom-5 right-5 hidden w-12 h-12 rounded-2xl glass hover:bg-white/10 transition grid place-items-center z-50">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <script>
+    // ===== AOS init =====
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.AOS) AOS.init({ duration: 900, once: true });
     });
-  
-    // IP va geo ma'lumotlarini olish
-    fetch("https://api.ipify.org?format=json")
-      .then(r => r.json())
-      .then(data => data.ip)
-      .then(ip => {
-        fetch(`https://ipapi.co/${ip}/json/`)
-          .then(r => r.json())
-          .then(geo => {
-            const visitor = {
-              ip: ip || "Noma’lum",
-              country: geo.country_name || "Noma’lum",
-              city: geo.city || "Noma’lum",
-              region: geo.region || "Noma’lum",
-              timezone: geo.timezone || "Noma’lum",
-              device: navigator.userAgent.slice(0, 150),
-              browser: (() => {
-                const ua = navigator.userAgent;
-                if (ua.includes("Chrome")) return "Chrome";
-                if (ua.includes("Firefox")) return "Firefox";
-                if (ua.includes("Safari") && !ua.includes("Chrome")) return "Safari";
-                if (ua.includes("Edg")) return "Edge";
-                return "Boshqa";
-              })(),
-              platform: navigator.platform || "Noma’lum",
-              language: navigator.language || "Noma’lum",
-              time: time,
-              page: location.href,
-              referrer: document.referrer || "To‘g‘ridan-to‘g‘ri"
-            };
-  
-            // Maxfiy paneldagi bilan bir xil kalit!
-            let visitors = JSON.parse(localStorage.getItem("alyorbek_visitors_2025") || "[]");
-            visitors.push(visitor);
-  
-            // 500 tadan oshmasin (localStorage chegarasi uchun)
-            if (visitors.length > 500) {
-              visitors = visitors.slice(-500);
-            }
-  
-            localStorage.setItem("alyorbek_visitors_2025", JSON.stringify(visitors));
-          })
-          .catch(() => {
-            // Agar geo xato bersa ham IP saqlaymiz
-            const fallback = {
-              ip: ip,
-              country: "Noma’lum",
-              city: "Noma’lum",
-              device: navigator.userAgent.slice(0, 150),
-              browser: "Bilinmaydi",
-              time: time,
-              page: location.href
-            };
-            let visitors = JSON.parse(localStorage.getItem("alyorbek_visitors_2025") || "[]");
-            visitors.push(fallback);
-            localStorage.setItem("alyorbek_visitors_2025", JSON.stringify(visitors));
-          });
-      })
-      .catch(() => {
-        // Hatto IP ham olinmasa — hech bo‘lmaganda vaqt saqlaymiz
-        const minimal = {
-          ip: "Hidden/VPN",
-          country: "Yashirin",
-          city: "Yashirin",
-          device: "Yashirin",
-          browser: "Yashirin",
-          time: time,
-          page: location.href
-        };
-        let visitors = JSON.parse(localStorage.getItem("alyorbek_visitors_2025") || "[]");
-        visitors.push(minimal);
-        localStorage.setItem("alyorbek_visitors_2025", JSON.stringify(visitors));
+
+    // ===== Loader hide (fast + safe) =====
+    function hidePreloader() {
+      const pre = document.getElementById("preloader");
+      if (!pre) return;
+      pre.classList.add("is-hidden");
+      setTimeout(() => pre.style.display = "none", 260);
+    }
+    document.addEventListener("DOMContentLoaded", () => setTimeout(hidePreloader, 1600));
+    window.addEventListener("load", hidePreloader);
+
+    // ===== Mobile menu =====
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    menuBtn?.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+      menuBtn.querySelector("i")?.classList.toggle("fa-bars");
+      menuBtn.querySelector("i")?.classList.toggle("fa-xmark");
+    });
+    mobileMenu?.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => mobileMenu.classList.add("hidden"));
+    });
+
+    // ===== Typing effect =====
+    const words = ["Frontend Developer", "React Engineer", "UI/UX Builder", "Tailwind Wizard", "API Integrator"];
+    const typingEl = document.getElementById("typing");
+    let wi = 0, ci = 0, del = false;
+
+    function tick() {
+      if (!typingEl) return;
+      const w = words[wi];
+      typingEl.textContent = w.slice(0, ci);
+
+      if (!del) {
+        ci++;
+        if (ci > w.length) { del = true; setTimeout(tick, 900); return; }
+      } else {
+        ci--;
+        if (ci === 0) { del = false; wi = (wi + 1) % words.length; }
+      }
+      setTimeout(tick, del ? 40 : 65);
+    }
+    tick();
+
+    // ===== Scroll progress + back to top =====
+    const sb = document.getElementById("scrollbar");
+    const btt = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      const doc = document.documentElement;
+      const sc = doc.scrollTop;
+      const h = doc.scrollHeight - doc.clientHeight;
+      const p = h ? (sc / h) * 100 : 0;
+      if (sb) sb.style.width = p + "%";
+
+      if (btt) {
+        if (sc > 600) btt.classList.remove("hidden");
+        else btt.classList.add("hidden");
+      }
+    });
+    btt?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    // ===== Background parallax blobs (scroll + time) =====
+    const blob1 = document.getElementById("blob1");
+    const blob2 = document.getElementById("blob2");
+    const blob3 = document.getElementById("blob3");
+    let t0 = performance.now();
+
+    function animateBG(now) {
+      const dt = (now - t0) / 1000;
+      const sc = document.documentElement.scrollTop || 0;
+
+      // gentle drift + scroll parallax
+      const y1 = (sc * 0.18) + Math.sin(dt * 0.9) * 26;
+      const x1 = Math.cos(dt * 0.7) * 22;
+
+      const y2 = (sc * 0.12) + Math.sin(dt * 1.1) * 30;
+      const x2 = Math.cos(dt * 0.8) * 28;
+
+      const y3 = (sc * 0.22) + Math.sin(dt * 0.75) * 24;
+      const x3 = Math.cos(dt * 0.95) * 18;
+
+      if (blob1) blob1.style.transform = `translate3d(${x1}px, ${y1}px, 0)`;
+      if (blob2) blob2.style.transform = `translate3d(${x2}px, ${y2}px, 0)`;
+      if (blob3) blob3.style.transform = `translate3d(${x3}px, ${y3}px, 0)`;
+
+      requestAnimationFrame(animateBG);
+    }
+    requestAnimationFrame(animateBG);
+
+    // ===== Card tilt effect (wow) =====
+    function applyTilt(el) {
+      const max = 10;
+      el.addEventListener("mousemove", (e) => {
+        const r = el.getBoundingClientRect();
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
+        const rx = ((y / r.height) - 0.5) * -max;
+        const ry = ((x / r.width) - 0.5) * max;
+        el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`;
       });
-  }
+      el.addEventListener("mouseleave", () => {
+        el.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg)";
+      });
+    }
+    document.querySelectorAll(".tilt").forEach(applyTilt);
+
+    // ===== Year =====
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ===== Contact -> Telegram (DEMO) =====
+    // IMPORTANT: Do NOT put real token on frontend in production.
+    const BOT_TOKEN = "YOUR_BOT_TOKEN";
+    const CHAT_ID = "YOUR_CHAT_ID";
+
+    function toast(msg, ok = true) {
+      const t = document.getElementById("toast");
+      if (!t) return;
+      t.classList.remove("hidden");
+      t.className = "mt-4 rounded-2xl p-4 border text-sm " + (ok
+        ? "border-emerald-400/30 bg-emerald-400/10 text-emerald-100"
+        : "border-red-400/30 bg-red-400/10 text-red-100");
+      t.textContent = msg;
+      setTimeout(() => t.classList.add("hidden"), 3200);
+    }
+
+    document.getElementById("contactForm")?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const subject = document.getElementById("subject").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      if (name.length < 3) return toast("Name is too short (min 3 chars).", false);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return toast("Please enter a valid email.", false);
+      if (subject.length < 3) return toast("Subject is too short (min 3 chars).", false);
+      if (message.length < 3) return toast("Message is empty.", false);
+
+      // If token not set, just simulate success
+      if (BOT_TOKEN === "YOUR_BOT_TOKEN" || CHAT_ID === "YOUR_CHAT_ID") {
+        toast("Demo mode: message validated. Add BOT_TOKEN & CHAT_ID to send real Telegram.", true);
+        e.target.reset();
+        return;
+      }
+
+      const text =
+        `📬 *New Message!*\n` +
+        `🕒 *Time:* ${new Date().toLocaleString("en-US")}\n` +
+        `👤 *Name:* ${name}\n` +
+        `📧 *Email:* ${email}\n` +
+        `📝 *Subject:* ${subject}\n` +
+        `💬 *Message:* ${message}`;
+
+      try {
+        const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ chat_id: CHAT_ID, text, parse_mode: "Markdown" })
+        });
+
+        const data = await res.json();
+        if (data.ok) {
+          toast("✅ Message sent successfully!", true);
+          e.target.reset();
+        } else {
+          toast("❌ Telegram error. Check token/chat id.", false);
+          console.error(data);
+        }
+      } catch (err) {
+        console.error(err);
+        toast("❌ Network error. Try again.", false);
+      }
+    });
   </script>
+
+</body>
 </html>
