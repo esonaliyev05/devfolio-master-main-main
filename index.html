@@ -1007,7 +1007,6 @@
     }
     requestAnimationFrame(animateBG);
 
-    // ===== Card tilt effect (wow) =====
     function applyTilt(el) {
       const max = 10;
       el.addEventListener("mousemove", (e) => {
@@ -1024,11 +1023,8 @@
     }
     document.querySelectorAll(".tilt").forEach(applyTilt);
 
-    // ===== Year =====
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // ===== Contact -> Telegram (DEMO) =====
-    // IMPORTANT: Do NOT put real token on frontend in production.
     const BOT_TOKEN = "8436153934:AAHHFiz0n7l7tyjKafauqCOQbStHclr4V3c";
     const CHAT_ID = "6992354984";
 
